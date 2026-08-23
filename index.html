@@ -1,42 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
-  <meta name="google-site-verification" content="qnGf2r-91QLSFuTE-prKDvON4sT_0hx2FpMf4OmZ0LE" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>MEDORA | The Medical Learning OS</title>
-  <meta name="description" content="Next-Generation Medical Learning OS: Spaced Repetition, Clinical Cases, MCQ Engine & Knowledge Map." />
-  <meta name="theme-color" content="#0B0F19" />
+  <title>MEDORA OS — Advanced Medical Learning Engine</title>
+  <meta name="description" content="The Ultimate Medical Learning OS: Spaced Repetition, Live ECG Clinical Simulators, Image Occlusion & Board MCQ Bank." />
+  <meta name="theme-color" content="#070B14" />
 
-  <!-- Google Fonts: Inter & Tajawal for Arabic -->
+  <!-- Google Fonts: Inter, Tajawal (Arabic) & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Canvas Confetti for Achievements -->
+  <!-- Canvas Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     /* ==========================================================================
-       1. CSS VARIABLES & THEMES (ULTRA LUXURY MEDICAL DESIGN SYSTEM)
+       1. LUXURY MEDICAL DESIGN SYSTEM VARIABLES
        ========================================================================== */
     :root {
       --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-ar: 'Tajawal', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
 
-      /* Primary Brand Palette */
-      --brand-50: #F0F9FF;
-      --brand-100: #E0F2FE;
+      /* Master Medical Palette */
       --brand-400: #38BDF8;
       --brand-500: #0EA5E9;
       --brand-600: #0284C7;
       --brand-gradient: linear-gradient(135deg, #0284C7 0%, #2563EB 50%, #7C3AED 100%);
-      --card-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+      --ecg-green: #22C55E;
+      --ecg-glow: rgba(34, 197, 94, 0.4);
 
-      /* Accents */
       --success: #10B981;
       --success-bg: rgba(16, 185, 129, 0.12);
       --warning: #F59E0B;
@@ -54,48 +51,39 @@
 
       --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       --transition-spring: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      --sidebar-width: 260px;
+      --sidebar-width: 270px;
     }
 
-    /* Dark Mode (Default Premium Deep Navy) */
     [data-theme="dark"] {
-      --bg-body: #070B14;
-      --bg-surface: #0E1626;
-      --bg-surface-elevated: #152238;
-      --bg-card: rgba(18, 28, 48, 0.7);
-      --bg-card-hover: rgba(24, 38, 64, 0.85);
+      --bg-body: #060911;
+      --bg-surface: #0C1220;
+      --bg-surface-elevated: #131E33;
+      --bg-card: rgba(16, 24, 40, 0.75);
       --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-strong: rgba(255, 255, 255, 0.15);
+      --border-strong: rgba(255, 255, 255, 0.16);
       --text-primary: #F8FAFC;
       --text-secondary: #94A3B8;
       --text-muted: #64748B;
-      --glass-bg: rgba(14, 22, 38, 0.75);
-      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
-      --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
-      --shadow-glow: 0 0 30px rgba(14, 165, 233, 0.2);
+      --glass-bg: rgba(12, 18, 32, 0.8);
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
     }
 
-    /* Light Mode */
     [data-theme="light"] {
       --bg-body: #F4F7FB;
       --bg-surface: #FFFFFF;
       --bg-surface-elevated: #FFFFFF;
-      --bg-card: rgba(255, 255, 255, 0.85);
-      --bg-card-hover: #FFFFFF;
-      --border-subtle: rgba(226, 232, 240, 0.8);
-      --border-strong: rgba(203, 213, 225, 0.9);
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --border-subtle: rgba(226, 232, 240, 0.85);
+      --border-strong: rgba(203, 213, 225, 0.95);
       --text-primary: #0F172A;
       --text-secondary: #475569;
       --text-muted: #94A3B8;
-      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-bg: rgba(255, 255, 255, 0.88);
       --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.04);
       --shadow-lg: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
-      --shadow-glow: 0 0 30px rgba(2, 132, 199, 0.15);
     }
 
-    /* ==========================================================================
-       2. RESET & BASE STYLES
-       ========================================================================== */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -120,8 +108,8 @@
     body {
       display: flex;
       background-image: 
-        radial-gradient(at 15% 15%, rgba(14, 165, 233, 0.07) 0px, transparent 50%),
-        radial-gradient(at 85% 85%, rgba(124, 58, 237, 0.05) 0px, transparent 50%);
+        radial-gradient(at 10% 10%, rgba(14, 165, 233, 0.08) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, rgba(124, 58, 237, 0.06) 0px, transparent 50%);
       background-attachment: fixed;
     }
 
@@ -137,34 +125,18 @@
       transition: var(--transition-smooth);
     }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--border-strong);
-      border-radius: 10px;
-    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 10px; }
 
-    /* ==========================================================================
-       3. APP SHELL & LAYOUT
-       ========================================================================== */
-    .app-container {
-      display: flex;
-      width: 100%;
-      min-height: 100vh;
-    }
+    /* Layout Shell */
+    .app-container { display: flex; width: 100%; min-height: 100vh; }
 
-    /* Sidebar Desktop */
     aside.app-sidebar {
       width: var(--sidebar-width);
       background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       border-inline-end: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
@@ -174,44 +146,42 @@
       height: 100vh;
       z-index: 100;
       padding: 24px 16px;
-      transition: var(--transition-smooth);
     }
 
     .brand-header {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 8px 12px;
-      margin-bottom: 28px;
+      padding: 6px 12px;
+      margin-bottom: 24px;
     }
 
     .brand-logo {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 12px;
       background: var(--brand-gradient);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      box-shadow: 0 8px 16px rgba(14, 165, 233, 0.35);
+      box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4);
     }
 
     .brand-info h1 {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 800;
       letter-spacing: -0.5px;
       background: linear-gradient(135deg, var(--text-primary), var(--brand-400));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      line-height: 1.1;
     }
 
     .brand-info span {
-      font-size: 0.72rem;
-      font-weight: 600;
+      font-size: 0.7rem;
+      font-weight: 700;
       color: var(--brand-500);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
     }
 
@@ -224,12 +194,12 @@
     }
 
     .nav-label {
-      font-size: 0.7rem;
-      font-weight: 700;
+      font-size: 0.68rem;
+      font-weight: 800;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      padding: 12px 14px 6px;
+      letter-spacing: 0.9px;
+      padding: 12px 14px 4px;
     }
 
     .nav-item {
@@ -241,8 +211,6 @@
       color: var(--text-secondary);
       font-size: 0.88rem;
       font-weight: 600;
-      text-decoration: none;
-      position: relative;
       background: transparent;
       width: 100%;
       text-align: start;
@@ -250,22 +218,15 @@
 
     .nav-item:hover {
       color: var(--text-primary);
-      background: rgba(255, 255, 255, 0.04);
-      transform: translateX(2px);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateX(3px);
     }
-
-    [dir="rtl"] .nav-item:hover {
-      transform: translateX(-2px);
-    }
+    [dir="rtl"] .nav-item:hover { transform: translateX(-3px); }
 
     .nav-item.active {
       color: #FFFFFF;
       background: var(--brand-gradient);
-      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
-    }
-
-    .nav-item.active i {
-      color: #FFFFFF;
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.35);
     }
 
     .nav-badge {
@@ -273,60 +234,12 @@
       font-size: 0.72rem;
       padding: 2px 8px;
       border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.18);
       font-weight: 700;
+      font-family: var(--font-mono);
     }
 
-    .sidebar-footer {
-      padding-top: 16px;
-      border-top: 1px solid var(--border-subtle);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .user-profile-widget {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 10px;
-      border-radius: var(--radius-md);
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-    }
-
-    .user-avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--brand-gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: white;
-    }
-
-    .user-details {
-      flex: 1;
-      overflow: hidden;
-    }
-
-    .user-name {
-      font-size: 0.82rem;
-      font-weight: 700;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-
-    .user-sub {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    /* Main Content Region */
+    /* Main Viewport */
     main.main-viewport {
       flex: 1;
       margin-inline-start: var(--sidebar-width);
@@ -335,7 +248,6 @@
       max-width: calc(100vw - var(--sidebar-width));
     }
 
-    /* Header Bar */
     .top-header {
       display: flex;
       align-items: center;
@@ -360,15 +272,8 @@
       font-size: 0.88rem;
       transition: var(--transition-smooth);
     }
-
-    [dir="rtl"] .search-input {
-      padding: 12px 42px 12px 18px;
-    }
-
-    .search-input:focus {
-      border-color: var(--brand-500);
-      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
-    }
+    [dir="rtl"] .search-input { padding: 12px 42px 12px 18px; }
+    .search-input:focus { border-color: var(--brand-500); box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.18); }
 
     .search-icon {
       position: absolute;
@@ -382,7 +287,7 @@
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .btn-icon {
@@ -396,12 +301,7 @@
       align-items: center;
       justify-content: center;
     }
-
-    .btn-icon:hover {
-      color: var(--text-primary);
-      background: var(--bg-surface-elevated);
-      border-color: var(--border-strong);
-    }
+    .btn-icon:hover { color: var(--text-primary); background: var(--bg-surface-elevated); border-color: var(--border-strong); }
 
     .btn-streak {
       display: flex;
@@ -416,42 +316,7 @@
       font-size: 0.85rem;
     }
 
-    /* Mobile Bottom Navigation */
-    .mobile-bottom-nav {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-top: 1px solid var(--border-subtle);
-      padding: 8px 12px;
-      z-index: 200;
-      justify-content: space-around;
-    }
-
-    .bottom-nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      color: var(--text-muted);
-      font-size: 0.68rem;
-      font-weight: 600;
-      background: transparent;
-      padding: 6px 12px;
-      border-radius: var(--radius-md);
-    }
-
-    .bottom-nav-item.active {
-      color: var(--brand-500);
-    }
-
-    /* ==========================================================================
-       4. LUXURY CARD & COMPONENT PRIMITIVES
-       ========================================================================== */
+    /* Standardized Panels */
     .card-panel {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
@@ -459,50 +324,37 @@
       padding: 24px;
       box-shadow: var(--shadow-sm);
       position: relative;
-      overflow: hidden;
       transition: var(--transition-smooth);
     }
-
-    .card-panel:hover {
-      border-color: var(--border-strong);
-      box-shadow: var(--shadow-lg);
-    }
+    .card-panel:hover { border-color: var(--border-strong); }
 
     .btn-primary {
       background: var(--brand-gradient);
       color: white;
       font-weight: 700;
-      font-size: 0.92rem;
-      padding: 12px 24px;
+      font-size: 0.9rem;
+      padding: 12px 22px;
       border-radius: var(--radius-pill);
       display: inline-flex;
       align-items: center;
       gap: 8px;
       box-shadow: 0 8px 24px rgba(14, 165, 233, 0.35);
     }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(14, 165, 233, 0.5);
-    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(14, 165, 233, 0.5); }
 
     .btn-secondary {
       background: var(--bg-surface-elevated);
       color: var(--text-primary);
       border: 1px solid var(--border-subtle);
       font-weight: 600;
-      font-size: 0.88rem;
-      padding: 10px 20px;
+      font-size: 0.85rem;
+      padding: 10px 18px;
       border-radius: var(--radius-pill);
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
-
-    .btn-secondary:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-strong);
-    }
+    .btn-secondary:hover { background: var(--border-subtle); border-color: var(--border-strong); }
 
     .badge {
       display: inline-flex;
@@ -510,1136 +362,646 @@
       gap: 4px;
       padding: 4px 10px;
       border-radius: var(--radius-pill);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.3px;
     }
-
     .badge-cyan { background: rgba(14, 165, 233, 0.12); color: var(--brand-400); border: 1px solid rgba(14, 165, 233, 0.25); }
     .badge-amber { background: var(--warning-bg); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.25); }
     .badge-emerald { background: var(--success-bg); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.25); }
     .badge-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid rgba(139, 92, 246, 0.25); }
     .badge-rose { background: var(--danger-bg); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.25); }
 
-    /* ==========================================================================
-       5. VIEW: DASHBOARD
-       ========================================================================== */
-    .view-container {
-      display: none;
-      animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .view-container.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-banner {
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.18) 0%, rgba(124, 58, 237, 0.1) 100%), var(--bg-surface);
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius-xl);
-      padding: 32px 36px;
-      margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-banner::after {
-      content: '';
-      position: absolute;
-      inset-inline-end: -60px;
-      top: -60px;
-      width: 240px;
-      height: 240px;
-      background: radial-gradient(circle, rgba(14, 165, 233, 0.25), transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-text h2 {
-      font-size: 1.75rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 6px;
-    }
-
-    .hero-text p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      max-width: 520px;
-      line-height: 1.5;
-    }
-
-    .mission-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .mission-pill {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      padding: 8px 14px;
-      border-radius: var(--radius-pill);
-      font-size: 0.82rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 24px;
-    }
-
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .stat-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 18px;
-    }
-
-    .stat-box-title {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .stat-box-value {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--text-primary);
-      font-family: var(--font-mono);
-    }
-
-    .stat-box-sub {
-      font-size: 0.72rem;
-      color: var(--success);
-      margin-top: 4px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .subject-progress-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .subject-item {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .subject-item-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    .progress-bar-bg {
-      height: 8px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-surface-elevated);
-      overflow: hidden;
-    }
-
-    .progress-bar-fill {
-      height: 100%;
-      border-radius: var(--radius-pill);
-      background: var(--brand-gradient);
-      transition: width 1s ease;
-    }
-
-    /* Daily Heatmap Matrix */
-    .heatmap-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 6px;
-      margin-top: 14px;
-    }
-
-    .heatmap-cell {
-      aspect-ratio: 1;
-      border-radius: 6px;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
-      transition: var(--transition-smooth);
-    }
-
-    .heatmap-cell.level-1 { background: rgba(14, 165, 233, 0.2); }
-    .heatmap-cell.level-2 { background: rgba(14, 165, 233, 0.45); }
-    .heatmap-cell.level-3 { background: rgba(14, 165, 233, 0.7); }
-    .heatmap-cell.level-4 { background: #0284C7; }
+    .view-container { display: none; animation: fadeIn 0.3s ease; }
+    .view-container.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
     /* ==========================================================================
-       6. VIEW: ANKI SPACED REPETITION ENGINE (CARD VIEWER)
-       ========================================================================== */
-    .review-arena {
-      max-width: 780px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .review-header-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .flashcard-wrapper {
-      perspective: 1200px;
-      min-height: 420px;
-    }
-
-    .flashcard-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius-xl);
-      padding: 36px;
-      min-height: 420px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      box-shadow: var(--shadow-lg);
-      transition: var(--transition-smooth);
-    }
-
-    .card-meta-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-
-    .card-question-text {
-      font-size: 1.35rem;
-      font-weight: 700;
-      line-height: 1.5;
-      color: var(--text-primary);
-      margin-bottom: 24px;
-    }
-
-    .cloze-blank {
-      background: rgba(14, 165, 233, 0.2);
-      color: var(--brand-400);
-      padding: 2px 10px;
-      border-radius: 6px;
-      border-bottom: 2px solid var(--brand-500);
-      font-weight: 700;
-    }
-
-    .card-answer-revealed {
-      border-top: 1px dashed var(--border-strong);
-      padding-top: 24px;
-      margin-top: 12px;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .clinical-pearl-box {
-      background: rgba(139, 92, 246, 0.08);
-      border: 1px solid rgba(139, 92, 246, 0.25);
-      border-radius: var(--radius-md);
-      padding: 14px 18px;
-      margin-top: 18px;
-      font-size: 0.88rem;
-    }
-
-    .clinical-pearl-title {
-      font-weight: 700;
-      color: var(--purple);
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .common-trap-box {
-      background: rgba(239, 68, 68, 0.08);
-      border: 1px solid rgba(239, 68, 68, 0.25);
-      border-radius: var(--radius-md);
-      padding: 14px 18px;
-      margin-top: 12px;
-      font-size: 0.88rem;
-    }
-
-    .common-trap-title {
-      font-weight: 700;
-      color: var(--danger);
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .rating-button-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .btn-rate {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 10px;
-      border-radius: var(--radius-lg);
-      font-weight: 700;
-      font-size: 0.9rem;
-      border: 1px solid transparent;
-      gap: 4px;
-    }
-
-    .btn-rate span.interval-tag {
-      font-size: 0.72rem;
-      opacity: 0.85;
-      font-family: var(--font-mono);
-    }
-
-    .btn-rate.again { background: var(--danger-bg); color: var(--danger); border-color: rgba(239, 68, 68, 0.3); }
-    .btn-rate.hard { background: var(--warning-bg); color: var(--warning); border-color: rgba(245, 158, 11, 0.3); }
-    .btn-rate.good { background: rgba(14, 165, 233, 0.12); color: var(--brand-400); border-color: rgba(14, 165, 233, 0.3); }
-    .btn-rate.easy { background: var(--success-bg); color: var(--success); border-color: rgba(16, 185, 129, 0.3); }
-
-    .btn-rate:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.15);
-    }
-
-    /* Shortcuts helper */
-    .shortcuts-guide {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 8px;
-    }
-
-    .shortcut-kbd {
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: 4px;
-      padding: 2px 6px;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-    }
-
-    /* ==========================================================================
-       7. VIEW: CLINICAL CASES SIMULATOR (🩻)
+       2. VIEW: CLINICAL CASES & LIVE ECG MONITOR
        ========================================================================== */
     .clinical-case-container {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 24px;
     }
 
-    .vitals-monitor {
-      background: #020617;
-      border: 1px solid #1E293B;
+    .ecg-monitor-frame {
+      background: #040810;
+      border: 1px solid #1A2840;
       border-radius: var(--radius-lg);
-      padding: 16px 20px;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+    }
+
+    .ecg-header-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: #38BDF8;
+    }
+
+    canvas#ecg-canvas {
+      width: 100%;
+      height: 90px;
+      display: block;
+      background: #02050B;
+      border-radius: 6px;
+    }
+
+    .vitals-hud {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      color: #38BDF8;
-      font-family: var(--font-mono);
-      margin-bottom: 20px;
-    }
-
-    .vital-item {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .vital-name {
-      font-size: 0.7rem;
-      color: #64748B;
-    }
-
-    .vital-val {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #22C55E;
-    }
-
-    .vital-val.abnormal {
-      color: #EF4444;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    .case-narrative {
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: var(--text-secondary);
-      margin-bottom: 20px;
-    }
-
-    .case-options {
-      display: flex;
-      flex-direction: column;
       gap: 10px;
-    }
-
-    .case-opt-btn {
-      padding: 14px 18px;
-      border-radius: var(--radius-md);
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-primary);
-      text-align: start;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .case-opt-btn:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--brand-500);
-    }
-
-    .case-opt-btn.correct {
-      background: var(--success-bg);
-      border-color: var(--success);
-      color: var(--success);
-    }
-
-    .case-opt-btn.wrong {
-      background: var(--danger-bg);
-      border-color: var(--danger);
-      color: var(--danger);
-    }
-
-    /* ==========================================================================
-       8. VIEW: MCQ EXAM ENGINE (📝)
-       ========================================================================== */
-    .mcq-layout {
-      max-width: 840px;
-      margin: 0 auto;
-    }
-
-    .exam-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .exam-timer {
+      margin-top: 12px;
       font-family: var(--font-mono);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--warning);
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    .mcq-option-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 20px;
-      border-radius: var(--radius-lg);
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      margin-bottom: 12px;
-      cursor: pointer;
-      transition: var(--transition-smooth);
+    .hud-stat {
+      background: rgba(14, 22, 38, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 8px 12px;
     }
-
-    .mcq-option-card:hover {
-      border-color: var(--brand-500);
-      background: var(--bg-surface-elevated);
-    }
-
-    .mcq-option-letter {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--bg-surface-elevated);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.85rem;
-    }
-
-    .mcq-option-card.selected {
-      border-color: var(--brand-500);
-      background: rgba(14, 165, 233, 0.08);
-    }
-
-    .mcq-option-card.selected .mcq-option-letter {
-      background: var(--brand-500);
-      color: white;
-    }
+    .hud-label { font-size: 0.65rem; color: #64748B; }
+    .hud-val { font-size: 1.15rem; font-weight: 800; color: #22C55E; }
+    .hud-val.alert { color: #EF4444; animation: flash 1s infinite; }
+    @keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
     /* ==========================================================================
-       9. VIEW: KNOWLEDGE MAP (🗺️)
+       3. VIEW: ANATOMY & IMAGE OCCLUSION
        ========================================================================== */
-    .knowledge-tree {
-      display: flex;
-      flex-direction: column;
+    .anatomy-workspace {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 24px;
-      padding: 20px 0;
     }
 
-    .tree-node-cluster {
+    .svg-occlusion-stage {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-xl);
       padding: 24px;
-    }
-
-    .cluster-title {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .node-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .concept-chip {
-      padding: 10px 18px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
-      font-size: 0.85rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
-
-    .concept-chip:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-    .status-dot.mastered { background: #10B981; box-shadow: 0 0 8px #10B981; }
-    .status-dot.developing { background: #F59E0B; box-shadow: 0 0 8px #F59E0B; }
-    .status-dot.weak { background: #EF4444; box-shadow: 0 0 8px #EF4444; }
-
-    /* ==========================================================================
-       10. VIEW: MEDICAL LIBRARY & DRUGS (💊)
-       ========================================================================== */
-    .library-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .monograph-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-xl);
-      padding: 22px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 16px;
-      transition: var(--transition-smooth);
-    }
-
-    .monograph-card:hover {
-      border-color: var(--brand-500);
-      transform: translateY(-3px);
-    }
-
-    /* Modal Styling */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      display: none;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-    }
-
-    .modal-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius-xl);
-      max-width: 640px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 32px;
-      box-shadow: var(--shadow-lg);
       position: relative;
     }
 
-    /* Responsive Queries */
-    @media (max-width: 1024px) {
-      .dashboard-grid { grid-template-columns: 1fr; }
-      .clinical-case-container { grid-template-columns: 1fr; }
+    .occlusion-mask {
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .occlusion-mask rect {
+      fill: #EF4444;
+      rx: 6;
+      transition: var(--transition-smooth);
+    }
+    .occlusion-mask:hover rect { fill: #F59E0B; }
+    .occlusion-mask.revealed rect { fill: rgba(16, 185, 129, 0.2); stroke: #10B981; stroke-width: 2; stroke-dasharray: 4; }
+    .occlusion-mask text {
+      fill: white;
+      font-family: var(--font-main);
+      font-size: 12px;
+      font-weight: 700;
+      user-select: none;
+      pointer-events: none;
     }
 
+    /* ==========================================================================
+       4. VIEW: UWORLD-STYLE MCQ ENGINE
+       ========================================================================== */
+    .mcq-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-surface-elevated);
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 20px;
+    }
+
+    .tool-btn {
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+    }
+    .tool-btn:hover { background: var(--border-subtle); color: var(--text-primary); }
+    .tool-btn.active { background: rgba(14, 165, 233, 0.15); color: var(--brand-400); }
+
+    .vignette-box {
+      font-size: 1.02rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      color: var(--text-primary);
+    }
+
+    .highlighted-text {
+      background: rgba(245, 158, 11, 0.35);
+      border-radius: 3px;
+      padding: 0 2px;
+    }
+
+    .uworld-choice-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+    .uworld-choice-item:hover { border-color: var(--brand-500); background: var(--bg-surface-elevated); }
+    .uworld-choice-item.struck { opacity: 0.4; text-decoration: line-through; }
+    .uworld-choice-item.selected { border-color: var(--brand-500); background: rgba(14, 165, 233, 0.08); }
+    .uworld-choice-item.correct-ans { border-color: var(--success); background: var(--success-bg); }
+    .uworld-choice-item.wrong-ans { border-color: var(--danger); background: var(--danger-bg); }
+
+    .choice-key {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg-surface-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+    .uworld-choice-item.selected .choice-key { background: var(--brand-500); color: white; }
+
+    .choice-strike-trigger {
+      margin-inline-start: auto;
+      color: var(--text-muted);
+      padding: 4px;
+      border-radius: 4px;
+    }
+    .choice-strike-trigger:hover { color: var(--danger); }
+
+    .peer-stat-tag {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      margin-inline-start: 10px;
+    }
+
+    /* ==========================================================================
+       5. FLASHCARD ENGINE (WITH INTERVAL PREVIEWS)
+       ========================================================================== */
+    .card-actions-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn-fsrs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 12px 8px;
+      border-radius: var(--radius-lg);
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: 1px solid transparent;
+    }
+    .btn-fsrs span.due-label { font-size: 0.7rem; font-family: var(--font-mono); opacity: 0.8; }
+    .btn-fsrs.again { background: var(--danger-bg); color: var(--danger); border-color: rgba(239, 68, 68, 0.3); }
+    .btn-fsrs.hard { background: var(--warning-bg); color: var(--warning); border-color: rgba(245, 158, 11, 0.3); }
+    .btn-fsrs.good { background: rgba(14, 165, 233, 0.12); color: var(--brand-400); border-color: rgba(14, 165, 233, 0.3); }
+    .btn-fsrs.easy { background: var(--success-bg); color: var(--success); border-color: rgba(16, 185, 129, 0.3); }
+
+    /* Mobile Bottom Nav */
+    .mobile-bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border-subtle);
+      padding: 8px 12px;
+      z-index: 200;
+      justify-content: space-around;
+    }
+    .bottom-nav-item {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      color: var(--text-muted); font-size: 0.68rem; font-weight: 600; background: transparent;
+    }
+    .bottom-nav-item.active { color: var(--brand-500); }
+
+    @media (max-width: 1024px) {
+      .clinical-case-container, .anatomy-workspace { grid-template-columns: 1fr; }
+    }
     @media (max-width: 768px) {
       aside.app-sidebar { display: none; }
-      main.main-viewport {
-        margin-inline-start: 0;
-        max-width: 100vw;
-        padding: 20px 16px 90px;
-      }
+      main.main-viewport { margin-inline-start: 0; max-width: 100vw; padding: 18px 16px 90px; }
       .mobile-bottom-nav { display: flex; }
-      .rating-button-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats-row { grid-template-columns: 1fr; }
+      .card-actions-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
   <div class="app-container">
-
-    <!-- ==========================================================================
-         SIDEBAR NAVIGATION
-         ========================================================================== -->
+    
+    <!-- SIDEBAR -->
     <aside class="app-sidebar">
       <div class="brand-header">
-        <div class="brand-logo">
-          <i data-lucide="activity" style="width: 22px; height: 22px;"></i>
-        </div>
+        <div class="brand-logo"><i data-lucide="activity" style="width: 24px; height: 24px;"></i></div>
         <div class="brand-info">
           <h1>MEDORA</h1>
-          <span data-i18n="appSubtitle">Medical OS</span>
+          <span>Medical OS v2.4</span>
         </div>
       </div>
 
       <div class="nav-group">
-        <div class="nav-label" data-i18n="navLearn">Core Engine</div>
+        <div class="nav-label" data-i18n="navEngines">Core Engines</div>
         <button class="nav-item active" onclick="app.navigate('dashboard')">
           <i data-lucide="layout-dashboard" style="width: 18px; height: 18px;"></i>
           <span data-i18n="navDashboard">Dashboard</span>
         </button>
         <button class="nav-item" onclick="app.navigate('review')">
           <i data-lucide="brain-circuit" style="width: 18px; height: 18px;"></i>
-          <span data-i18n="navReview">Smart Review</span>
-          <span class="nav-badge" id="sidebar-due-count">12</span>
+          <span data-i18n="navReview">Spaced Repetition</span>
+          <span class="nav-badge" id="badge-due-count">14</span>
+        </button>
+        <button class="nav-item" onclick="app.navigate('anatomy')">
+          <i data-lucide="scan" style="width: 18px; height: 18px;"></i>
+          <span data-i18n="navAnatomy">Anatomy & Occlusion</span>
         </button>
         <button class="nav-item" onclick="app.navigate('cases')">
-          <i data-lucide="stethoscope" style="width: 18px; height: 18px;"></i>
-          <span data-i18n="navCases">Clinical Cases</span>
+          <i data-lucide="heart-pulse" style="width: 18px; height: 18px;"></i>
+          <span data-i18n="navCases">Live ECG & Cases</span>
         </button>
         <button class="nav-item" onclick="app.navigate('mcq')">
           <i data-lucide="file-check-2" style="width: 18px; height: 18px;"></i>
-          <span data-i18n="navMCQ">MCQ Engine</span>
+          <span data-i18n="navMCQ">Board MCQ Engine</span>
         </button>
 
-        <div class="nav-label" data-i18n="navKnowledge">Medical Base</div>
+        <div class="nav-label" data-i18n="navVault">Medical Base</div>
         <button class="nav-item" onclick="app.navigate('library')">
           <i data-lucide="book-open" style="width: 18px; height: 18px;"></i>
-          <span data-i18n="navLibrary">Drug & Library</span>
+          <span data-i18n="navLibrary">Drug Pharmacopeia</span>
         </button>
-        <button class="nav-item" onclick="app.navigate('knowledge-map')">
-          <i data-lucide="git-fork" style="width: 18px; height: 18px;"></i>
-          <span data-i18n="navMap">Knowledge Map</span>
-        </button>
-        <button class="nav-item" onclick="app.navigate('notes')">
-          <i data-lucide="sticky-note" style="width: 18px; height: 18px;"></i>
-          <span data-i18n="navNotes">Medical Notes</span>
-        </button>
-
-        <div class="nav-label" data-i18n="navSystem">Insights & System</div>
-        <button class="nav-item" onclick="app.navigate('analytics')">
-          <i data-lucide="bar-chart-3" style="width: 18px; height: 18px;"></i>
-          <span data-i18n="navAnalytics">Analytics</span>
+        <button class="nav-item" onclick="app.navigate('builder')">
+          <i data-lucide="plus-circle" style="width: 18px; height: 18px;"></i>
+          <span data-i18n="navBuilder">Deck Builder & Cloze</span>
         </button>
         <button class="nav-item" onclick="app.navigate('settings')">
           <i data-lucide="settings" style="width: 18px; height: 18px;"></i>
-          <span data-i18n="navSettings">Settings</span>
+          <span data-i18n="navSettings">Vault & Settings</span>
         </button>
       </div>
 
-      <div class="sidebar-footer">
-        <div class="user-profile-widget">
-          <div class="user-avatar">DR</div>
-          <div class="user-details">
-            <div class="user-name">Medical Scholar</div>
-            <div class="user-sub" data-i18n="userLevel">Level 4 • Resident</div>
-          </div>
+      <div style="padding-top: 14px; border-top: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 10px;">
+        <div style="width: 34px; height: 34px; border-radius: 50%; background: var(--brand-gradient); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.8rem; color: white;">MD</div>
+        <div>
+          <div style="font-size: 0.82rem; font-weight: 700;">Dr. Alexander</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Cardiology Fellow • Level 6</div>
         </div>
       </div>
     </aside>
 
-    <!-- ==========================================================================
-         MAIN VIEWPORT
-         ========================================================================== -->
+    <!-- MAIN VIEWPORT -->
     <main class="main-viewport">
       
-      <!-- Top Search & Actions Bar -->
+      <!-- Top Bar -->
       <header class="top-header">
         <div class="search-container">
           <i data-lucide="search" class="search-icon" style="width: 18px; height: 18px;"></i>
-          <input type="text" class="search-input" id="global-search-input" placeholder="Search drugs, cases, anatomical terms... [Ctrl + K]" oninput="app.handleGlobalSearch(this.value)" />
+          <input type="text" class="search-input" id="omni-search" placeholder="Search drugs, pathology, ECG signs... [Press / to focus]" oninput="app.searchOmni(this.value)" />
         </div>
 
         <div class="header-actions">
           <div class="btn-streak">
             <i data-lucide="flame" style="width: 18px; height: 18px;"></i>
-            <span id="streak-counter">14</span> <span data-i18n="streakDays">Days</span>
+            <span>18</span> <span data-i18n="streakDays">Day Streak</span>
           </div>
 
-          <button class="btn-icon" onclick="app.toggleTheme()" title="Toggle Theme">
-            <i data-lucide="moon" id="theme-toggle-icon" style="width: 18px; height: 18px;"></i>
+          <button class="btn-icon" onclick="app.toggleSound()" id="sound-btn" title="Toggle Medical Audio FX">
+            <i data-lucide="volume-2" style="width: 18px; height: 18px;"></i>
           </button>
 
-          <button class="btn-icon" onclick="app.toggleLanguage()" title="Toggle Language (العربية / EN)">
-            <span style="font-weight: 800; font-size: 0.8rem;" id="lang-indicator">عربي</span>
+          <button class="btn-icon" onclick="app.toggleTheme()" title="Theme Switcher">
+            <i data-lucide="moon" id="theme-icon" style="width: 18px; height: 18px;"></i>
+          </button>
+
+          <button class="btn-icon" onclick="app.toggleLanguage()" title="Language Switcher (العربية / EN)">
+            <span style="font-weight: 800; font-size: 0.8rem;" id="lang-btn-text">عربي</span>
           </button>
         </div>
       </header>
 
-      <!-- ======================================================================
+      <!-- ==================================================================
            VIEW 1: DASHBOARD
-           ====================================================================== -->
+           ================================================================== -->
       <section id="view-dashboard" class="view-container active">
-        <div class="hero-banner">
-          <div class="hero-text">
-            <div class="badge badge-cyan" style="margin-bottom: 10px;">
-              <i data-lucide="sparkles" style="width: 12px; height: 12px;"></i> Spaced Repetition Active
-            </div>
-            <h2 data-i18n="heroGreeting">Good Evening, Doctor 👋</h2>
-            <p data-i18n="heroSub">Your cognitive retention is at 88%. You have 12 cards due today and 1 clinical case simulation awaiting analysis.</p>
-            
-            <div class="mission-pills">
-              <div class="mission-pill">
-                <i data-lucide="layers" style="width: 14px; height: 14px; color: var(--brand-400);"></i>
-                <span>12 Due Reviews</span>
-              </div>
-              <div class="mission-pill">
-                <i data-lucide="plus-circle" style="width: 14px; height: 14px; color: var(--success);"></i>
-                <span>8 New Cards</span>
-              </div>
-              <div class="mission-pill">
-                <i data-lucide="clock" style="width: 14px; height: 14px; color: var(--warning);"></i>
-                <span>~15 min study time</span>
-              </div>
-            </div>
-
-            <div style="margin-top: 24px; display: flex; gap: 12px;">
-              <button class="btn-primary" onclick="app.navigate('review')">
-                <i data-lucide="play" style="width: 16px; height: 16px;"></i>
-                <span data-i18n="btnStartReview">Start Today's Review</span>
-              </button>
-              <button class="btn-secondary" onclick="app.navigate('cases')">
-                <i data-lucide="stethoscope" style="width: 16px; height: 16px;"></i>
-                <span data-i18n="btnLaunchCase">Launch Clinical Case</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="dashboard-grid">
-          <!-- Left Main Metrics -->
-          <div style="display: flex; flex-direction: column; gap: 24px;">
-            <div class="stats-row">
-              <div class="stat-box">
-                <div class="stat-box-title" data-i18n="statRetention">Retention Rate</div>
-                <div class="stat-box-value" id="dash-retention">88.4%</div>
-                <div class="stat-box-sub"><i data-lucide="trending-up" style="width: 12px; height: 12px;"></i> +2.3% this week</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-box-title" data-i18n="statCardsMastered">Cards Mastered</div>
-                <div class="stat-box-value" id="dash-mastered">742</div>
-                <div class="stat-box-sub"><i data-lucide="check" style="width: 12px; height: 12px;"></i> 82% mature</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-box-title" data-i18n="statClinicalAccuracy">Clinical Accuracy</div>
-                <div class="stat-box-value" id="dash-cases-acc">91%</div>
-                <div class="stat-box-sub"><i data-lucide="award" style="width: 12px; height: 12px;"></i> Top 5% percentile</div>
-              </div>
-            </div>
-
-            <!-- Subject Mastery Progress -->
-            <div class="card-panel">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="font-size: 1.05rem; font-weight: 800;" data-i18n="titleCurriculum">Curriculum Mastery Breakdown</h3>
-                <span class="badge badge-emerald">Overall: 79%</span>
-              </div>
-              
-              <div class="subject-progress-list">
-                <div class="subject-item">
-                  <div class="subject-item-header">
-                    <span>🫀 Cardiology & Hemodynamics</span>
-                    <span>86%</span>
-                  </div>
-                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 86%;"></div></div>
-                </div>
-
-                <div class="subject-item">
-                  <div class="subject-item-header">
-                    <span>💊 Autonomic Pharmacology</span>
-                    <span>74%</span>
-                  </div>
-                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 74%;"></div></div>
-                </div>
-
-                <div class="subject-item">
-                  <div class="subject-item-header">
-                    <span>🔬 Renal Pathology & Glomerulonephritis</span>
-                    <span>68%</span>
-                  </div>
-                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 68%;"></div></div>
-                </div>
-
-                <div class="subject-item">
-                  <div class="subject-item-header">
-                    <span>🧠 Clinical Neuroanatomy</span>
-                    <span>92%</span>
-                  </div>
-                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 92%;"></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Sidebar / Activity Widget -->
-          <div style="display: flex; flex-direction: column; gap: 24px;">
-            <div class="card-panel">
-              <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 12px;" data-i18n="titleActivity">Study Heatmap</h3>
-              <p style="font-size: 0.78rem; color: var(--text-muted);">Consistency builds synaptic consolidation.</p>
-              
-              <div class="heatmap-grid" id="dashboard-heatmap">
-                <!-- 28 Heatmap cells injected dynamically -->
-              </div>
-            </div>
-
-            <div class="card-panel" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, var(--bg-surface) 100%);">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                <i data-lucide="alert-triangle" style="width: 18px; height: 18px; color: var(--danger);"></i>
-                <h3 style="font-size: 0.95rem; font-weight: 800; color: var(--danger);" data-i18n="titleWeakAlert">High-Yield Weak Area</h3>
-              </div>
-              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">
-                You missed questions regarding <strong>Nephrotic vs Nephritic Syndrome</strong> 3 times recently.
-              </p>
-              <button class="btn-secondary" style="margin-top: 14px; width: 100%; justify-content: center; font-size: 0.8rem;" onclick="app.cramWeakConcept()">
-                Review Concept Now
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================================
-           VIEW 2: SMART REVIEW (SPACED REPETITION CARD VIEWER)
-           ====================================================================== -->
-      <section id="view-review" class="view-container">
-        <div class="review-arena">
-          
-          <div class="review-header-bar">
+        <div class="card-panel" style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(124, 58, 237, 0.08) 100%), var(--bg-surface); margin-bottom: 24px; padding: 32px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
             <div>
-              <span class="badge badge-purple" id="review-deck-title">Cardiology • Pharmacology</span>
-              <span class="badge badge-amber" style="margin-inline-start: 6px;" id="review-highyield-badge">⚡ High Yield</span>
-            </div>
-            <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
-              Card <span id="review-current-index">1</span> of <span id="review-total-count">12</span>
-            </div>
-          </div>
-
-          <!-- The Active Flashcard -->
-          <div class="flashcard-wrapper">
-            <div class="flashcard-box" id="active-card-box">
-              <div>
-                <div class="card-meta-top">
-                  <span id="review-card-type">BASIC + CLINICAL PEARL</span>
-                  <button class="btn-icon" onclick="app.toggleCardStar()" style="width: 32px; height: 32px;" title="Star Card [S]">
-                    <i data-lucide="star" id="card-star-icon" style="width: 14px; height: 14px;"></i>
-                  </button>
-                </div>
-
-                <!-- Front Question -->
-                <div class="card-question-text" id="review-front-content">
-                  What is the mechanism of action of <span class="cloze-blank">Atropine</span> in treating symptomatic sinus bradycardia?
-                </div>
-
-                <!-- Back Answer (Hidden until Reveal) -->
-                <div id="review-back-container" style="display: none;" class="card-answer-revealed">
-                  <div style="font-size: 1.05rem; font-weight: 600; line-height: 1.6; color: var(--text-primary);" id="review-back-content">
-                    It acts as a competitive antagonist at muscarinic acetylcholine receptors ($M_2$), blocking parasympathetic vagal input to the SA and AV nodes, thereby increasing heart rate and conduction velocity.
-                  </div>
-
-                  <div class="clinical-pearl-box" id="review-pearl-container">
-                    <div class="clinical-pearl-title">
-                      <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i> High-Yield Clinical Pearl
-                    </div>
-                    <div id="review-pearl-content" style="color: var(--text-secondary);">
-                      Low doses of atropine (< 0.5 mg) can paradoxically cause transient bradycardia due to central vagal stimulation or blockade of presynaptic inhibitory $M_1$ autoreceptors.
-                    </div>
-                  </div>
-
-                  <div class="common-trap-box" id="review-trap-container">
-                    <div class="common-trap-title">
-                      <i data-lucide="alert-octagon" style="width: 14px; height: 14px;"></i> Don't Confuse / Exam Trap
-                    </div>
-                    <div id="review-trap-content" style="color: var(--text-secondary);">
-                      Atropine is completely ineffective in heart transplant patients because the transplanted donor heart is surgically denervated!
-                    </div>
-                  </div>
-                </div>
+              <div class="badge badge-cyan" style="margin-bottom: 12px;">
+                <i data-lucide="zap" style="width: 12px; height: 12px;"></i> FSRS-4.5 Scheduler Calibrated
               </div>
-
-              <!-- Action / Response Area -->
-              <div style="margin-top: 32px;">
-                <button id="btn-reveal-answer" class="btn-primary" style="width: 100%; justify-content: center; padding: 16px;" onclick="app.revealCardAnswer()">
-                  <span>Show Answer</span>
-                  <span class="shortcut-kbd" style="background: rgba(255,255,255,0.2);">Space</span>
-                </button>
-
-                <div id="rating-actions-panel" style="display: none;">
-                  <div class="rating-button-grid">
-                    <button class="btn-rate again" onclick="app.rateCard(1)">
-                      <span>Again</span>
-                      <span class="interval-tag">< 1 min</span>
-                      <span class="shortcut-kbd">1</span>
-                    </button>
-                    <button class="btn-rate hard" onclick="app.rateCard(2)">
-                      <span>Hard</span>
-                      <span class="interval-tag">1 day</span>
-                      <span class="shortcut-kbd">2</span>
-                    </button>
-                    <button class="btn-rate good" onclick="app.rateCard(3)">
-                      <span>Good</span>
-                      <span class="interval-tag">3 days</span>
-                      <span class="shortcut-kbd">3</span>
-                    </button>
-                    <button class="btn-rate easy" onclick="app.rateCard(4)">
-                      <span>Easy</span>
-                      <span class="interval-tag">7 days</span>
-                      <span class="shortcut-kbd">4</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
+              <h2 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 8px;" data-i18n="dashWelcome">Welcome back, Chief Resident 👋</h2>
+              <p style="color: var(--text-secondary); max-width: 580px; font-size: 0.92rem; line-height: 1.6;" data-i18n="dashSub">
+                Your neural memory stability is <strong>89.4%</strong> across 1,420 consolidated items. Today’s mission: 14 spaced reviews and 1 high-acuity STEMI simulation.
+              </p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn-primary" onclick="app.navigate('review')"><i data-lucide="play" style="width: 16px; height: 16px;"></i> <span data-i18n="btnStartReview">Start Spaced Review</span></button>
+              <button class="btn-secondary" onclick="app.navigate('cases')"><i data-lucide="activity" style="width: 16px; height: 16px;"></i> <span data-i18n="btnRunECG">Live ECG Simulator</span></button>
             </div>
           </div>
+        </div>
 
-          <div class="shortcuts-guide">
-            <span><span class="shortcut-kbd">Space</span> Reveal Answer</span>
-            <span><span class="shortcut-kbd">1</span>-<span class="shortcut-kbd">4</span> Rate Difficulty</span>
-            <span><span class="shortcut-kbd">S</span> Star Card</span>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 24px;">
+          <div class="card-panel">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">MEMORY RETENTION</div>
+            <div style="font-size: 1.7rem; font-weight: 800; font-family: var(--font-mono); color: var(--brand-400);">89.4%</div>
+            <div style="font-size: 0.72rem; color: var(--success); margin-top: 4px;">Predicted accuracy at 30 days</div>
           </div>
-
+          <div class="card-panel">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">CARDS MASTERED</div>
+            <div style="font-size: 1.7rem; font-weight: 800; font-family: var(--font-mono); color: var(--purple);">1,108</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 4px;">Interval > 21 days (Mature)</div>
+          </div>
+          <div class="card-panel">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">DIAGNOSTIC ACCURACY</div>
+            <div style="font-size: 1.7rem; font-weight: 800; font-family: var(--font-mono); color: var(--success);">93.2%</div>
+            <div style="font-size: 0.72rem; color: var(--success); margin-top: 4px;">USMLE Board Percentile: 96th</div>
+          </div>
         </div>
       </section>
 
-      <!-- ======================================================================
-           VIEW 3: CLINICAL CASES SIMULATOR (🩻)
-           ====================================================================== -->
+      <!-- ==================================================================
+           VIEW 2: ANATOMY & IMAGE OCCLUSION
+           ================================================================== -->
+      <section id="view-anatomy" class="view-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <div>
+            <h2 style="font-size: 1.4rem; font-weight: 800;">Interactive Anatomy & Image Occlusion</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Cardiac Conduction System & Coronary Anatomy Quiz.</p>
+          </div>
+          <button class="btn-secondary" onclick="app.resetOcclusions()"><i data-lucide="rotate-ccw" style="width: 16px; height: 16px;"></i> Hide All Labels</button>
+        </div>
+
+        <div class="anatomy-workspace">
+          <div class="svg-occlusion-stage">
+            <!-- High-Yield Interactive Vector Diagram of Cardiac Anatomy -->
+            <svg width="440" height="340" viewBox="0 0 440 340" style="max-width: 100%; height: auto;">
+              <!-- Heart Base Outline -->
+              <path d="M 220 70 C 140 10, 60 80, 110 190 C 150 270, 220 320, 220 320 C 220 320, 290 270, 330 190 C 380 80, 300 10, 220 70 Z" fill="#1E293B" stroke="#38BDF8" stroke-width="3" />
+              <!-- Aorta Arch -->
+              <path d="M 190 70 C 190 20, 260 20, 260 70" fill="none" stroke="#EF4444" stroke-width="12" stroke-linecap="round"/>
+              <!-- Conduction Pathway lines -->
+              <path d="M 160 110 L 200 160 L 200 220 L 160 260 M 200 220 L 240 260" fill="none" stroke="#F59E0B" stroke-width="4" stroke-dasharray="3,3"/>
+              
+              <!-- Occlusion Node 1: SA Node -->
+              <g class="occlusion-mask" id="mask-1" onclick="app.toggleMask(1, 'Sinoatrial (SA) Node')">
+                <rect x="110" y="95" width="105" height="30" />
+                <text x="162" y="115" text-anchor="middle">SA Node [? ]</text>
+              </g>
+
+              <!-- Occlusion Node 2: AV Node -->
+              <g class="occlusion-mask" id="mask-2" onclick="app.toggleMask(2, 'Atrioventricular (AV) Node')">
+                <rect x="155" y="150" width="110" height="30" />
+                <text x="210" y="170" text-anchor="middle">AV Node [? ]</text>
+              </g>
+
+              <!-- Occlusion Node 3: Bundle of His -->
+              <g class="occlusion-mask" id="mask-3" onclick="app.toggleMask(3, 'Bundle of His & Purkinje')">
+                <rect x="145" y="215" width="130" height="30" />
+                <text x="210" y="235" text-anchor="middle">Bundle of His [? ]</text>
+              </g>
+            </svg>
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 12px;">Click any red box to reveal/test structure name.</div>
+          </div>
+
+          <div class="card-panel">
+            <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 12px;">Active Structure Inspector</h3>
+            <div id="anatomy-inspector-content" style="font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary);">
+              Select any masked region on the diagram to inspect its clinical correlations, blood supply, and electrophysiology traps.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           VIEW 3: LIVE ECG & CLINICAL CASES
+           ================================================================== -->
       <section id="view-cases" class="view-container">
         <div class="clinical-case-container">
           
-          <!-- Left: Case File & Patient Monitor -->
+          <!-- Left: Realtime Patient Monitor -->
           <div class="card-panel">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-              <span class="badge badge-rose" id="case-badge-id">Case #042 • Emergency Medicine</span>
-              <span class="badge badge-cyan">Difficulty: High Yield</span>
-            </div>
-
-            <!-- Animated Patient Vitals -->
-            <div class="vitals-monitor">
-              <div class="vital-item">
-                <span class="vital-name">HR (BPM)</span>
-                <span class="vital-val abnormal" id="vital-hr">118</span>
+            <div class="ecg-monitor-frame">
+              <div class="ecg-header-line">
+                <span>BEDSIDE LEAD II • REAL-TIME 25mm/s</span>
+                <span style="color: #22C55E; display: flex; align-items: center; gap: 4px;">
+                  <span style="width: 8px; height: 8px; border-radius: 50%; background: #22C55E; display: inline-block;"></span> SENSING OK
+                </span>
               </div>
-              <div class="vital-item">
-                <span class="vital-name">BP (mmHg)</span>
-                <span class="vital-val abnormal" id="vital-bp">88/54</span>
-              </div>
-              <div class="vital-item">
-                <span class="vital-name">SpO₂</span>
-                <span class="vital-val" id="vital-spo2">93%</span>
-              </div>
-              <div class="vital-item">
-                <span class="vital-name">TEMP</span>
-                <span class="vital-val" id="vital-temp">37.2°C</span>
-              </div>
-            </div>
-
-            <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 12px;" id="case-title">
-              Acute Chest Pain Radiating to Left Jaw in a 58-Year-Old Male
-            </h3>
-
-            <div class="case-narrative" id="case-narrative-text">
-              A 58-year-old male with a 20-pack-year smoking history and poorly controlled hypertension presents to the Emergency Department with severe, crushing retrosternal chest pain that began 45 minutes ago while shoveling snow. He is diaphoretic, pale, and nauseous. Physical examination reveals bilateral basilar lung crackles and an $S_4$ gallop on cardiac auscultation.
-            </div>
-
-            <div style="background: var(--bg-surface-elevated); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-              <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">INITIAL ECG STRIP:</div>
-              <div style="font-size: 0.88rem; font-family: var(--font-mono); color: var(--brand-400);">
-                ST-segment elevations of 3.5 mm in leads V1-V4 with reciprocal ST depressions in II, III, and aVF.
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: Clinical Reasoning & Question -->
-          <div class="card-panel" style="display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <div style="font-size: 0.8rem; font-weight: 700; color: var(--brand-400); margin-bottom: 6px;">
-                CLINICAL DECISION STEP 1 / 3
-              </div>
-              <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 18px;" id="case-question-text">
-                Which coronary artery is most likely occluded, and what is the immediate definitive management?
-              </h4>
-
-              <div class="case-options" id="case-options-container">
-                <button class="case-opt-btn" onclick="app.submitCaseAnswer(0, this)">
-                  A. Right Coronary Artery (RCA); IV Metoprolol + Observation
-                </button>
-                <button class="case-opt-btn" onclick="app.submitCaseAnswer(1, this)">
-                  B. Left Anterior Descending (LAD); Immediate Primary Percutaneous Coronary Intervention (PCI)
-                </button>
-                <button class="case-opt-btn" onclick="app.submitCaseAnswer(2, this)">
-                  C. Left Circumflex (LCx); Emergent Coronary Artery Bypass Graft (CABG)
-                </button>
-                <button class="case-opt-btn" onclick="app.submitCaseAnswer(3, this)">
-                  D. Left Main Coronary Artery; Thrombolytic therapy without antiplatelets
-                </button>
-              </div>
-
-              <!-- Rationale Display -->
-              <div id="case-rationale-box" style="display: none; margin-top: 18px; animation: fadeIn 0.3s ease;">
-                <div class="clinical-pearl-box" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.3);">
-                  <div style="font-weight: 700; color: var(--success); margin-bottom: 4px;">
-                    ✓ Correct Clinical Formulation
-                  </div>
-                  <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
-                    ST elevations across V1-V4 represent an <strong>Anterior Wall STEMI</strong>, supplied by the <strong>LAD artery</strong>. Because the patient is within the 12-hour window and hypotensive with pulmonary edema (Killip Class II), immediate reperfusion via primary PCI within 90 minutes is the life-saving standard.
-                  </div>
+              <canvas id="ecg-canvas" width="600" height="120"></canvas>
+              
+              <div class="vitals-hud">
+                <div class="hud-stat">
+                  <div class="hud-label">PULSE (BPM)</div>
+                  <div class="hud-val alert" id="case-live-hr">122</div>
+                </div>
+                <div class="hud-stat">
+                  <div class="hud-label">ART BP (mmHg)</div>
+                  <div class="hud-val alert">84/52</div>
+                </div>
+                <div class="hud-stat">
+                  <div class="hud-label">SpO₂ (%)</div>
+                  <div class="hud-val">91%</div>
+                </div>
+                <div class="hud-stat">
+                  <div class="hud-label">LACTATE</div>
+                  <div class="hud-val alert">4.2 mM</div>
                 </div>
               </div>
             </div>
 
-            <div style="margin-top: 24px; display: flex; justify-content: flex-end;">
-              <button class="btn-primary" id="btn-next-case" onclick="app.loadNextCase()">
-                <span>Next Clinical Case</span>
-                <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-              </button>
-            </div>
+            <div class="badge badge-rose" style="margin-bottom: 10px;">Emergency Simulation • Resuscitation</div>
+            <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px;">Anterior STEMI with Cardiogenic Shock</h3>
+            <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 16px;">
+              A 61-year-old diabetic male arrives in profound diaphoresis with cold, clammy extremities and worsening respiratory distress. Auscultation reveals pulmonary rales throughout both lung fields.
+            </p>
+          </div>
 
+          <!-- Right: Interactive Clinical Decisions -->
+          <div class="card-panel" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--brand-400); margin-bottom: 8px;">EMERGENCY CLINICAL DECISION</div>
+              <h4 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 16px;">What is the most immediate hemodynamically appropriate intervention?</h4>
+              
+              <div style="display: flex; flex-direction: column; gap: 10px;" id="case-options-list">
+                <button class="uworld-choice-item" onclick="app.answerCaseStep(1, false, this)">
+                  <div class="choice-key">A</div>
+                  <div style="font-size: 0.88rem;">Administer 2L IV Normal Saline Bolus rapidly and start IV Esmolol</div>
+                </button>
+                <button class="uworld-choice-item" onclick="app.answerCaseStep(2, true, this)">
+                  <div class="choice-key">B</div>
+                  <div style="font-size: 0.88rem;">Initiate IV Dobutamine/Norepinephrine support and activate emergent Cardiac Catheterization Lab</div>
+                </button>
+                <button class="uworld-choice-item" onclick="app.answerCaseStep(3, false, this)">
+                  <div class="choice-key">C</div>
+                  <div style="font-size: 0.88rem;">Administer Sublingual Nitroglycerin 0.4mg repeated every 5 minutes</div>
+                </button>
+              </div>
+
+              <div id="case-explanation" style="display: none; margin-top: 18px; padding: 14px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md);">
+                <div style="font-weight: 800; color: var(--success); font-size: 0.88rem; margin-bottom: 4px;">✓ Correct Resuscitation Strategy</div>
+                <div style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">
+                  The patient is in <strong>Cardiogenic Shock</strong> (hypotension + pulmonary congestion). Nitrates and fluid overload are fatal here. Inotropes/vasopressors with immediate PCI reperfusion is the definitive guideline-directed management.
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
       </section>
 
-      <!-- ======================================================================
-           VIEW 4: MCQ ENGINE & EXAM SIMULATOR (📝)
-           ====================================================================== -->
+      <!-- ==================================================================
+           VIEW 4: UWORLD-STYLE BOARD MCQ ENGINE
+           ================================================================== -->
       <section id="view-mcq" class="view-container">
-        <div class="mcq-layout">
-          
-          <div class="exam-header">
-            <div>
-              <h2 style="font-size: 1.3rem; font-weight: 800;">USMLE Step 1 / Medical Board Simulator</h2>
-              <p style="font-size: 0.8rem; color: var(--text-muted);">Timed Block • Comprehensive Pathology & Pharmacology</p>
+        <div style="max-width: 860px; margin: 0 auto;">
+          <div class="mcq-toolbar">
+            <div style="display: flex; gap: 8px;">
+              <button class="tool-btn" id="btn-highlight-mode" onclick="app.toggleHighlighter()"><i data-lucide="highlighter" style="width: 14px; height: 14px;"></i> <span>Highlight</span></button>
+              <button class="tool-btn" id="btn-strike-mode" onclick="app.toggleStrikeMode()"><i data-lucide="strikethrough" style="width: 14px; height: 14px;"></i> <span>Strikethrough</span></button>
             </div>
-            <div class="exam-timer">
-              <i data-lucide="timer" style="width: 18px; height: 18px;"></i>
-              <span id="exam-timer-display">44:20</span>
+            <div style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--warning); display: flex; align-items: center; gap: 6px;">
+              <i data-lucide="clock" style="width: 14px; height: 14px;"></i> <span id="mcq-clock">38:12</span>
             </div>
           </div>
 
           <div class="card-panel">
             <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
-              <span class="badge badge-purple">Question 4 of 25</span>
-              <span class="badge badge-amber">Pharmacology</span>
+              <span class="badge badge-purple">Question 14 of 40 • Pharmacology / Renal</span>
+              <span class="badge badge-emerald">Peer Avg: 68% Correct</span>
             </div>
 
-            <div style="font-size: 1.05rem; line-height: 1.6; font-weight: 600; margin-bottom: 24px;">
-              A 64-year-old female with chronic heart failure with reduced ejection fraction (HFrEF, EF 28%) and hypertension is initiated on a new medication. Two weeks later, routine labs reveal serum potassium of 5.3 mEq/L (baseline 4.4) and serum creatinine increase from 1.0 to 1.2 mg/dL. She also reports a persistent dry nocturnal cough. Which of the following is the direct mechanism causing her respiratory symptom?
+            <div class="vignette-box" id="mcq-vignette" onmouseup="app.handleTextHighlight()">
+              A 54-year-old male with type 2 diabetes mellitus and hypertension presents with persistent microalbuminuria (urine albumin-to-creatinine ratio: 280 mg/g). He is prescribed Lisinopril. Which of the following renal hemodynamic changes directly explains how this medication preserves long-term glomerular filtration rate?
             </div>
 
-            <div id="mcq-options-container">
-              <div class="mcq-option-card" onclick="app.selectMCQOption(0, this)">
-                <div class="mcq-option-letter">A</div>
-                <div style="font-size: 0.92rem;">Inhibition of angiotensin II type-1 ($AT_1$) receptors in alveolar capillaries</div>
+            <div id="uworld-choices-container">
+              <div class="uworld-choice-item" onclick="app.pickUWorldChoice(0, false, this)">
+                <div class="choice-key">A</div>
+                <div style="font-size: 0.9rem;">Preferential constriction of the afferent glomerular arteriole</div>
+                <span class="peer-stat-tag">(12%)</span>
               </div>
-              <div class="mcq-option-card" onclick="app.selectMCQOption(1, this)">
-                <div class="mcq-option-letter">B</div>
-                <div style="font-size: 0.92rem;">Decreased degradation of Bradykinin and Substance P due to ACE inhibition</div>
+              <div class="uworld-choice-item" onclick="app.pickUWorldChoice(1, true, this)">
+                <div class="choice-key">B</div>
+                <div style="font-size: 0.9rem;">Preferential vasodilation of the efferent glomerular arteriole</div>
+                <span class="peer-stat-tag">(68%)</span>
               </div>
-              <div class="mcq-option-card" onclick="app.selectMCQOption(2, this)">
-                <div class="mcq-option-letter">C</div>
-                <div style="font-size: 0.92rem;">Blockade of aldosterone receptors in bronchial smooth muscle</div>
+              <div class="uworld-choice-item" onclick="app.pickUWorldChoice(2, false, this)">
+                <div class="choice-key">C</div>
+                <div style="font-size: 0.9rem;">Increased hydrostatic pressure within Bowman's capsule</div>
+                <span class="peer-stat-tag">(8%)</span>
               </div>
-              <div class="mcq-option-card" onclick="app.selectMCQOption(3, this)">
-                <div class="mcq-option-letter">D</div>
-                <div style="font-size: 0.92rem;">Direct vagal nerve stimulation by increased renin secretion</div>
+              <div class="uworld-choice-item" onclick="app.pickUWorldChoice(3, false, this)">
+                <div class="choice-key">D</div>
+                <div style="font-size: 0.9rem;">Direct stimulation of mesangial cell contraction via $AT_1$ activation</div>
+                <span class="peer-stat-tag">(12%)</span>
               </div>
             </div>
 
-            <!-- MCQ Explanation -->
-            <div id="mcq-explanation-box" style="display: none; margin-top: 24px;" class="card-panel">
-              <div style="font-size: 0.95rem; font-weight: 800; color: var(--success); margin-bottom: 8px;">
-                Answer Explanation (Option B)
-              </div>
-              <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary);">
-                Angiotensin-Converting Enzyme (ACE / Kininase II) is responsible for breaking down <strong>bradykinin</strong> and <strong>substance P</strong>. ACE inhibitors prevent this inactivation, leading to pulmonary accumulation of bradykinin, which stimulates unmyelinated C-fibers in the airway and triggers the classic dry cough.
+            <!-- Complete Detailed Rationale -->
+            <div id="uworld-rationale" style="display: none; margin-top: 24px;" class="card-panel">
+              <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--success); margin-bottom: 12px;">Comprehensive Educational Objective</h4>
+              <p style="font-size: 0.9rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 16px;">
+                Angiotensin II normally causes potent <strong>efferent arteriolar constriction</strong>, raising intraglomerular capillary pressure to maintain GFR at the cost of hyperfiltration stress. ACE inhibitors block Angiotensin II, causing <strong>efferent vasodilation</strong>, which lowers intraglomerular pressure and reduces microalbuminuria.
               </p>
+              
+              <div style="background: var(--bg-surface-elevated); padding: 12px; border-radius: var(--radius-md); font-size: 0.84rem; line-height: 1.5;">
+                <strong>Why other options are incorrect:</strong><br>
+                • <em>Option A (Afferent constriction):</em> Caused by NSAIDs (via prostaglandin inhibition), which drops GFR and can induce acute kidney injury.<br>
+                • <em>Option C:</em> Increased Bowman hydrostatic pressure occurs in urinary tract obstruction (hydronephrosis).
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           VIEW 5: SPACED REPETITION ENGINE
+           ================================================================== -->
+      <section id="view-review" class="view-container">
+        <div style="max-width: 760px; margin: 0 auto;">
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+            <div style="display: flex; gap: 8px;">
+              <span class="badge badge-purple" id="sr-deck-name">Cardiology • Pharmacology</span>
+              <button class="btn-icon" style="width: 28px; height: 28px;" onclick="app.pronounceCard()" title="Audio Pronounce Medical Term"><i data-lucide="volume-2" style="width: 14px; height: 14px;"></i></button>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">Card <span id="sr-cur-idx">1</span> of <span id="sr-total-count">14</span></div>
+          </div>
+
+          <div class="card-panel" style="min-height: 380px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 16px;">HIGH-YIELD RECALL PROMPT</div>
+              <div style="font-size: 1.35rem; font-weight: 700; line-height: 1.5;" id="sr-front-text">
+                What is the first-line pharmacologic antidote for organophosphate / sarin toxicity, and what is its mechanism?
+              </div>
+
+              <div id="sr-back-container" style="display: none; border-top: 1px dashed var(--border-strong); padding-top: 20px; margin-top: 20px;">
+                <div style="font-size: 1.05rem; font-weight: 600; line-height: 1.6;" id="sr-back-text">
+                  <strong>Atropine</strong> (competitive muscarinic antagonist to control secretions and bronchoconstriction) followed by <strong>Pralidoxime (2-PAM)</strong> to regenerate acetylcholinesterase before aging occurs.
+                </div>
+                <div style="margin-top: 14px; background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); padding: 12px; border-radius: var(--radius-md); font-size: 0.85rem;">
+                  <strong style="color: var(--purple);">Clinical Pearl:</strong> Atropine only relieves muscarinic signs (DUMBBELSS). Pralidoxime is required to reverse nicotinic muscle paralysis!
+                </div>
+              </div>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 28px;">
-              <button class="btn-secondary" onclick="app.showMCQExplanation()">Check Explanation</button>
-              <button class="btn-primary" onclick="app.nextMCQQuestion()">Next Question <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></button>
+            <div>
+              <button class="btn-primary" style="width: 100%; justify-content: center; padding: 14px;" id="btn-sr-reveal" onclick="app.revealSRAnswer()">
+                <span>Show Answer [Space]</span>
+              </button>
+
+              <div id="sr-fsrs-buttons" style="display: none;">
+                <div class="card-actions-grid">
+                  <button class="btn-fsrs again" onclick="app.rateSRCard(1)">
+                    <span>Again [1]</span>
+                    <span class="due-label">&lt; 1 min</span>
+                  </button>
+                  <button class="btn-fsrs hard" onclick="app.rateSRCard(2)">
+                    <span>Hard [2]</span>
+                    <span class="due-label">12 hrs</span>
+                  </button>
+                  <button class="btn-fsrs good" onclick="app.rateSRCard(3)">
+                    <span>Good [3]</span>
+                    <span class="due-label">3.5 days</span>
+                  </button>
+                  <button class="btn-fsrs easy" onclick="app.rateSRCard(4)">
+                    <span>Easy [4]</span>
+                    <span class="due-label">8.2 days</span>
+                  </button>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -1647,883 +1009,423 @@
         </div>
       </section>
 
-      <!-- ======================================================================
-           VIEW 5: MEDICAL LIBRARY & DRUGS (💊)
-           ====================================================================== -->
+      <!-- ==================================================================
+           VIEW 6: DRUG PHARMACOPEIA & VAULT
+           ================================================================== -->
       <section id="view-library" class="view-container">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-          <div>
-            <h2 style="font-size: 1.4rem; font-weight: 800;">High-Yield Pharmacopeia & Disease Monograph</h2>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Indexed preclinical and clinical medical knowledge base.</p>
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <button class="btn-secondary" onclick="app.filterLibrary('all')">All</button>
-            <button class="btn-secondary" onclick="app.filterLibrary('cardio')">Cardiovascular</button>
-            <button class="btn-secondary" onclick="app.filterLibrary('pharm')">Pharmacology</button>
-          </div>
-        </div>
-
-        <div class="library-grid" id="library-cards-container">
-          <!-- Dynamically Injected Drug & Disease Cards -->
+        <h2 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 16px;">Medical Pharmacopeia & Monographs</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px;" id="pharma-grid">
+          <!-- Dynamically Injected -->
         </div>
       </section>
 
-      <!-- ======================================================================
-           VIEW 6: MEDICAL KNOWLEDGE MAP (🗺️)
-           ====================================================================== -->
-      <section id="view-knowledge-map" class="view-container">
-        <div style="margin-bottom: 24px;">
-          <h2 style="font-size: 1.4rem; font-weight: 800;">Interactive Medical Knowledge Graph</h2>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Visualized conceptual mastery across organ systems.</p>
-        </div>
+      <!-- ==================================================================
+           VIEW 7: DECK BUILDER & CLOZE MAKER
+           ================================================================== -->
+      <section id="view-builder" class="view-container">
+        <div style="max-width: 680px; margin: 0 auto;" class="card-panel">
+          <h2 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 8px;">Create Spaced Repetition Card</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Use <code style="color: var(--brand-400);">{{c1::text}}</code> to make cloze deletions.</p>
 
-        <div class="knowledge-tree">
-          <div class="tree-node-cluster">
-            <div class="cluster-title">
-              <i data-lucide="heart-pulse" style="width: 20px; height: 20px; color: #EF4444;"></i>
-              Cardiovascular Medicine
-            </div>
-            <div class="node-chips">
-              <div class="concept-chip" onclick="app.openConceptModal('Cardiac Cycle & Wiggers Diagram')">
-                <div class="status-dot mastered"></div>
-                <span>Cardiac Cycle & Wiggers</span>
-              </div>
-              <div class="concept-chip" onclick="app.openConceptModal('Autonomic Receptor Distribution')">
-                <div class="status-dot mastered"></div>
-                <span>Autonomic Adrenergic/Cholinergic</span>
-              </div>
-              <div class="concept-chip" onclick="app.openConceptModal('Antiarrhythmic Classes (Vaughan Williams)')">
-                <div class="status-dot developing"></div>
-                <span>Antiarrhythmics (Class I-IV)</span>
-              </div>
-              <div class="concept-chip" onclick="app.openConceptModal('Coronary Syndromes & Biomarkers')">
-                <div class="status-dot mastered"></div>
-                <span>STEMI vs NSTEMI Biomarkers</span>
-              </div>
-              <div class="concept-chip" onclick="app.openConceptModal('Infective Endocarditis Duke Criteria')">
-                <div class="status-dot weak"></div>
-                <span>Infective Endocarditis Criteria</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="tree-node-cluster">
-            <div class="cluster-title">
-              <i data-lucide="dna" style="width: 20px; height: 20px; color: #8B5CF6;"></i>
-              Renal & Fluid Homeostasis
-            </div>
-            <div class="node-chips">
-              <div class="concept-chip" onclick="app.openConceptModal('Renin-Angiotensin-Aldosterone System')">
-                <div class="status-dot mastered"></div>
-                <span>RAAS & Hemodynamics</span>
-              </div>
-              <div class="concept-chip" onclick="app.openConceptModal('Nephrotic vs Nephritic Glomerulopathies')">
-                <div class="status-dot weak"></div>
-                <span>Nephrotic vs Nephritic Syndromes</span>
-              </div>
-              <div class="concept-chip" onclick="app.openConceptModal('Diuretics Site of Action')">
-                <div class="status-dot developing"></div>
-                <span>Tubular Diuretic Pharmacology</span>
-              </div>
-            </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <input type="text" id="builder-deck" placeholder="Deck Name (e.g. Neurology, Cardiology)" class="search-input" style="border-radius: var(--radius-md);" />
+            <textarea id="builder-front" placeholder="Question or Cloze sentence: The SA node is supplied by the {{c1::RCA}} in 60% of people." class="search-input" style="height: 100px; border-radius: var(--radius-md); resize: vertical;"></textarea>
+            <textarea id="builder-back" placeholder="Answer / Explanation / Pearls" class="search-input" style="height: 90px; border-radius: var(--radius-md); resize: vertical;"></textarea>
+            
+            <button class="btn-primary" style="justify-content: center;" onclick="app.createNewCustomCard()">
+              <i data-lucide="plus" style="width: 16px; height: 16px;"></i> <span>Save to Memory Vault</span>
+            </button>
           </div>
         </div>
       </section>
 
-      <!-- ======================================================================
-           VIEW 7: NOTES & AUTO-FLASHCARD GENERATOR (📝)
-           ====================================================================== -->
-      <section id="view-notes" class="view-container">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <div>
-            <h2 style="font-size: 1.4rem; font-weight: 800;">Smart Clinical Notepad</h2>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Write notes and instantly generate Spaced Repetition flashcards.</p>
-          </div>
-          <button class="btn-primary" onclick="app.parseNotesToCards()">
-            <i data-lucide="sparkles" style="width: 16px; height: 16px;"></i>
-            <span>Convert Notes → Flashcards</span>
-          </button>
-        </div>
-
-        <div class="card-panel">
-          <textarea id="medical-notes-editor" style="width: 100%; height: 320px; background: transparent; border: none; color: var(--text-primary); font-size: 0.95rem; line-height: 1.7; resize: vertical;" placeholder="Type your high-yield clinical notes here... 
-Example format for auto-card conversion:
-Q: What is the drug of choice for paroxysmal supraventricular tachycardia (PSVT)?
-A: Adenosine (administered as rapid IV push, causing transient AV node block)"></textarea>
-        </div>
-      </section>
-
-      <!-- ======================================================================
-           VIEW 8: ANALYTICS & LONGITUDINAL RETENTION (📊)
-           ====================================================================== -->
-      <section id="view-analytics" class="view-container">
-        <div style="margin-bottom: 24px;">
-          <h2 style="font-size: 1.4rem; font-weight: 800;">Longitudinal Learning Analytics</h2>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Evidence-based Spaced Repetition retention metrics.</p>
-        </div>
-
-        <div class="stats-row">
-          <div class="stat-box">
-            <div class="stat-box-title">Total Card Reviews</div>
-            <div class="stat-box-value">2,840</div>
-            <div class="stat-box-sub">+184 this week</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-box-title">Cumulative Study Hours</div>
-            <div class="stat-box-value">46.5 h</div>
-            <div class="stat-box-sub">Avg 42 min/day</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-box-title">Long-Term Memory Stability</div>
-            <div class="stat-box-value">92.1%</div>
-            <div class="stat-box-sub">FSRS Model calibrated</div>
-          </div>
-        </div>
-
-        <div class="card-panel" style="margin-top: 24px;">
-          <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 16px;">Forgetting Curve & Predicted Retention</h3>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
-            Your memory retention model is operating on an exponential decay curve with a stability half-life of <strong>14.2 days</strong> for mature cards. Reviews are automatically scheduled right before predicted memory decay drops below 90%.
-          </p>
-        </div>
-      </section>
-
-      <!-- ======================================================================
-           VIEW 9: SETTINGS & BACKUP (⚙️)
-           ====================================================================== -->
+      <!-- ==================================================================
+           VIEW 8: SETTINGS & BACKUP
+           ================================================================== -->
       <section id="view-settings" class="view-container">
-        <div style="margin-bottom: 24px;">
-          <h2 style="font-size: 1.4rem; font-weight: 800;">Platform Configuration & Local Vault</h2>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Manage your IndexedDB local database, bilingual settings, and data exports.</p>
-        </div>
+        <div class="card-panel" style="max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+          <h2 style="font-size: 1.3rem; font-weight: 800;">Memory Vault & Local Storage</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">All reviews, stability decay parameters, and custom decks remain 100% locally on your machine.</p>
 
-        <div class="card-panel" style="display: flex; flex-direction: column; gap: 24px; max-width: 680px;">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <div style="font-weight: 700;">Interface Language / لغة الواجهة</div>
-              <div style="font-size: 0.8rem; color: var(--text-muted);">Toggle English LTR or Arabic RTL complete layout</div>
-            </div>
-            <button class="btn-secondary" onclick="app.toggleLanguage()">Switch to Arabic / English</button>
-          </div>
-
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <div style="font-weight: 700;">Visual Theme</div>
-              <div style="font-size: 0.8rem; color: var(--text-muted);">Switch between Medical Deep Navy and Modern Light</div>
-            </div>
-            <button class="btn-secondary" onclick="app.toggleTheme()">Toggle Dark / Light</button>
-          </div>
-
-          <div style="border-top: 1px solid var(--border-subtle); padding-top: 20px;">
-            <div style="font-weight: 700; margin-bottom: 6px;">Backup & Data Sovereignty</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
-              Export all your cards, reviews, notes, and study history as a standalone JSON file or import external decks.
-            </div>
-            <div style="display: flex; gap: 12px;">
-              <button class="btn-secondary" onclick="app.exportDatabase()"><i data-lucide="download" style="width: 16px; height: 16px;"></i> Export Data (JSON)</button>
-              <button class="btn-secondary" onclick="document.getElementById('file-import-input').click()"><i data-lucide="upload" style="width: 16px; height: 16px;"></i> Import Data</button>
-              <input type="file" id="file-import-input" style="display: none;" accept=".json" onchange="app.importDatabase(event)" />
-            </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="btn-secondary" onclick="app.exportAllData()"><i data-lucide="download" style="width: 16px; height: 16px;"></i> Export Backup (JSON)</button>
+            <button class="btn-secondary" onclick="document.getElementById('import-file').click()"><i data-lucide="upload" style="width: 16px; height: 16px;"></i> Import Cards</button>
+            <input type="file" id="import-file" style="display: none;" accept=".json" onchange="app.importCardsFile(event)" />
           </div>
         </div>
       </section>
 
     </main>
 
-    <!-- Mobile Bottom Navigation -->
+    <!-- Mobile Nav -->
     <nav class="mobile-bottom-nav">
-      <button class="bottom-nav-item active" onclick="app.navigate('dashboard')">
-        <i data-lucide="layout-dashboard" style="width: 20px; height: 20px;"></i>
-        <span>Home</span>
-      </button>
-      <button class="bottom-nav-item" onclick="app.navigate('review')">
-        <i data-lucide="brain-circuit" style="width: 20px; height: 20px;"></i>
-        <span>Review</span>
-      </button>
-      <button class="bottom-nav-item" onclick="app.navigate('cases')">
-        <i data-lucide="stethoscope" style="width: 20px; height: 20px;"></i>
-        <span>Cases</span>
-      </button>
-      <button class="bottom-nav-item" onclick="app.navigate('library')">
-        <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
-        <span>Library</span>
-      </button>
-      <button class="bottom-nav-item" onclick="app.navigate('settings')">
-        <i data-lucide="settings" style="width: 20px; height: 20px;"></i>
-        <span>Settings</span>
-      </button>
+      <button class="bottom-nav-item active" onclick="app.navigate('dashboard')"><i data-lucide="layout-dashboard" style="width: 20px; height: 20px;"></i><span>Home</span></button>
+      <button class="bottom-nav-item" onclick="app.navigate('review')"><i data-lucide="brain-circuit" style="width: 20px; height: 20px;"></i><span>Cards</span></button>
+      <button class="bottom-nav-item" onclick="app.navigate('anatomy')"><i data-lucide="scan" style="width: 20px; height: 20px;"></i><span>Anatomy</span></button>
+      <button class="bottom-nav-item" onclick="app.navigate('cases')"><i data-lucide="heart-pulse" style="width: 20px; height: 20px;"></i><span>ECG</span></button>
+      <button class="bottom-nav-item" onclick="app.navigate('mcq')"><i data-lucide="file-check-2" style="width: 20px; height: 20px;"></i><span>MCQ</span></button>
     </nav>
 
   </div>
 
-  <!-- Modal for Concept Inspection -->
-  <div class="modal-overlay" id="concept-modal">
-    <div class="modal-box">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-        <h3 id="modal-concept-title" style="font-size: 1.2rem; font-weight: 800;">Concept Monograph</h3>
-        <button class="btn-icon" onclick="app.closeConceptModal()"><i data-lucide="x" style="width: 16px; height: 16px;"></i></button>
-      </div>
-      <div id="modal-concept-body" style="font-size: 0.92rem; line-height: 1.6; color: var(--text-secondary);">
-        Loading medical synopsis...
-      </div>
-      <div style="margin-top: 24px; display: flex; justify-content: flex-end;">
-        <button class="btn-primary" onclick="app.generateDeckFromModal()">Generate Flashcards for this Topic</button>
-      </div>
-    </div>
-  </div>
-
   <!-- ==========================================================================
-       11. JAVASCRIPT: MEDORA FULL PRODUCTION ENGINE
+       6. CORE JAVASCRIPT SYSTEM
        ========================================================================== -->
   <script>
-    /**
-     * MEDORA - The Medical Learning OS
-     * Complete Standalone Engine: SM-2/FSRS Spaced Repetition, IndexedDB storage,
-     * Clinical Case Simulators, MCQ Bank & Bilingual LTR/RTL engine.
-     */
-
-    // --- Seed Medical Data ---
-    const SEED_DATA = {
-      cards: [
-        {
-          id: 'card-1',
-          deck: 'Cardiovascular Pharmacology',
-          type: 'Basic + Clinical Pearl',
-          front: 'What is the mechanism of action of Metoprolol, and what is its receptor selectivity?',
-          back: 'Selective competitive antagonist of $\\beta_1$-adrenergic receptors. At high therapeutic concentrations, it partially loses selectivity and blocks $\\beta_2$ receptors as well.',
-          pearl: 'In patients with acute decompensated heart failure with wet/cold pulmonary edema, starting beta-blockers immediately is contraindicated until hemodynamic stabilization.',
-          trap: 'Don\'t confuse with Carvedilol, which is a non-selective $\\beta$-blocker with concurrent $\\alpha_1$-blocking vasodilatory action.',
-          highYield: true,
-          reps: 2,
-          interval: 3,
-          easeFactor: 2.5,
-          dueDate: Date.now() - 10000
-        },
-        {
-          id: 'card-2',
-          deck: 'Cardiovascular Physiology',
-          type: 'Cloze Deletion',
-          front: 'The primary pacemaker of the heart is the SA Node, which is vascularized by the RCA (Right Coronary Artery) in approximately 60% of individuals.',
-          back: 'SA node artery arises from the proximal RCA in ~60% of people and from the Left Circumflex (LCx) in ~40%.',
-          pearl: 'Inferior wall myocardial infarctions (leads II, III, aVF) commonly present with sinus bradycardia or AV block due to ischemia of the nodal artery.',
-          trap: 'Don\'t confuse dominance (determined by origin of Posterior Descending Artery) with nodal supply.',
-          highYield: true,
-          reps: 4,
-          interval: 7,
-          easeFactor: 2.6,
-          dueDate: Date.now() - 50000
-        },
-        {
-          id: 'card-3',
-          deck: 'Renal Pathology',
-          type: 'High-Yield Differentiation',
-          front: 'What are the classic hallmarks that differentiate Nephrotic Syndrome from Nephritic Syndrome?',
-          back: 'Nephrotic: Massive proteinuria (> 3.5 g/24h), hypoalbuminemia, severe generalized edema, hyperlipidemia, and lipiduria. Nephritic: Hematuria with dysmorphic RBCs/RBC casts, oliguria, hypertension, and mild-to-moderate proteinuria (< 3.5 g/24h).',
-          pearl: 'Membranous nephropathy is the most common cause of primary nephrotic syndrome in Caucasian adults, classically associated with anti-PLA2R antibodies.',
-          trap: 'Post-streptococcal glomerulonephritis is strictly Nephritic, not Nephrotic!',
-          highYield: true,
-          reps: 1,
-          interval: 1,
-          easeFactor: 2.3,
-          dueDate: Date.now() - 20000
-        }
-      ],
-      drugs: [
-        {
-          id: 'drug-1',
-          name: 'Metoprolol Tartrate / Succinate',
-          category: 'Cardiovascular',
-          class: 'Selective Beta-1 Adrenoceptor Antagonist',
-          moa: 'Reduces heart rate, cardiac output, and blood pressure by competitively antagonizing beta-1 receptors in myocardial tissue.',
-          indications: 'Angina pectoris, post-MI cardioprotection, rate control in atrial fibrillation, chronic HFrEF (Succinate formulation).',
-          adverse: 'Bradycardia, hypotension, fatigue, bronchospasm in susceptible asthmatics, masking of hypoglycemia symptoms in diabetics.'
-        },
-        {
-          id: 'drug-2',
-          name: 'Lisinopril',
-          category: 'Cardiovascular / Renal',
-          class: 'ACE Inhibitor',
-          moa: 'Inhibits Angiotensin-Converting Enzyme, halting conversion of Angiotensin I to Angiotensin II; reduces aldosterone secretion and reduces degradation of bradykinin.',
-          indications: 'Hypertension, HFrEF, post-MI left ventricular remodeling, diabetic nephropathy with microalbuminuria.',
-          adverse: 'Dry cough, hyperkalemia, acute kidney injury in bilateral renal artery stenosis, angioedema (life-threatening).'
-        },
-        {
-          id: 'drug-3',
-          name: 'Atorvastatin',
-          category: 'Lipid Lowering',
-          class: 'HMG-CoA Reductase Inhibitor',
-          moa: 'Competitively inhibits HMG-CoA reductase, the rate-limiting enzyme in hepatic cholesterol synthesis, leading to upregulation of LDL receptors.',
-          indications: 'Hypercholesterolemia, primary and secondary cardiovascular risk prevention, acute coronary syndromes.',
-          adverse: 'Myalgia, myopathy, elevated transaminases, rare rhabdomyolysis.'
-        }
-      ],
-      cases: [
-        {
-          id: 'case-042',
-          title: 'Acute Chest Pain Radiating to Left Jaw in a 58-Year-Old Male',
-          vitals: { hr: 118, bp: '88/54', spo2: '93%', temp: '37.2°C' },
-          narrative: 'A 58-year-old male with a 20-pack-year smoking history and poorly controlled hypertension presents to the Emergency Department with severe, crushing retrosternal chest pain that began 45 minutes ago while shoveling snow. He is diaphoretic, pale, and nauseous. Bilateral basilar crackles are heard on auscultation.',
-          ecg: 'ST-segment elevations of 3.5 mm in leads V1-V4 with reciprocal ST depressions in II, III, and aVF.',
-          question: 'Which coronary artery is most likely occluded, and what is the immediate definitive management?',
-          options: [
-            'A. Right Coronary Artery (RCA); IV Metoprolol + Observation',
-            'B. Left Anterior Descending (LAD); Immediate Primary Percutaneous Coronary Intervention (PCI)',
-            'C. Left Circumflex (LCx); Emergent Coronary Artery Bypass Graft (CABG)',
-            'D. Left Main Coronary Artery; Thrombolytic therapy without antiplatelets'
-          ],
-          correct: 1,
-          rationale: 'ST elevations across V1-V4 represent an Anterior Wall STEMI, supplied by the LAD artery. Immediate reperfusion via primary PCI is the gold standard.'
-        },
-        {
-          id: 'case-043',
-          title: 'Acute Shortness of Breath & Wheezing in a 24-Year-Old Athlete',
-          vitals: { hr: 124, bp: '135/85', spo2: '89%', temp: '36.8°C' },
-          narrative: 'A 24-year-old college runner presents with acute severe dyspnea, tachypnea, and chest tightness following an outdoor training session in cold weather. She is sitting in a tripod position, speaking only in short phrases. Auscultation reveals diffuse high-pitched expiratory wheezes throughout both lung fields with marked pulsus paradoxus.',
-          ecg: 'Sinus tachycardia with normal PR and QRS intervals.',
-          question: 'What is the most appropriate first-line pharmacologic intervention?',
-          options: [
-            'A. Inhaled Short-Acting Beta-2 Agonist (Albuterol) + Inhaled Ipratropium',
-            'B. Subcutaneous Epinephrine and immediate endotracheal intubation',
-            'C. Oral Montelukast with maintenance inhaled corticosteroids',
-            'D. Intravenous Furosemide and sublingual nitroglycerin'
-          ],
-          correct: 0,
-          rationale: 'The presentation is an acute severe asthma exacerbation. First-line therapy is rapid bronchodilation using inhaled SABA (albuterol) combined with an anticholinergic (ipratropium bromide) and systemic corticosteroids.'
-        }
-      ]
-    };
-
-    // --- Translations (English & Arabic) ---
-    const I18N = {
-      en: {
-        appSubtitle: 'Medical OS',
-        navLearn: 'Core Engine',
-        navDashboard: 'Dashboard',
-        navReview: 'Smart Review',
-        navCases: 'Clinical Cases',
-        navMCQ: 'MCQ Engine',
-        navKnowledge: 'Medical Base',
-        navLibrary: 'Drug & Library',
-        navMap: 'Knowledge Map',
-        navNotes: 'Medical Notes',
-        navSystem: 'Insights & System',
-        navAnalytics: 'Analytics',
-        navSettings: 'Settings',
-        heroGreeting: 'Good Evening, Doctor 👋',
-        heroSub: 'Your cognitive retention is at 88%. You have 12 cards due today and 1 clinical case simulation awaiting analysis.',
-        btnStartReview: "Start Today's Review",
-        btnLaunchCase: 'Launch Clinical Case',
-        statRetention: 'Retention Rate',
-        statCardsMastered: 'Cards Mastered',
-        statClinicalAccuracy: 'Clinical Accuracy',
-        titleCurriculum: 'Curriculum Mastery Breakdown',
-        titleActivity: 'Study Heatmap',
-        titleWeakAlert: 'High-Yield Weak Area',
-        userLevel: 'Level 4 • Resident',
-        streakDays: 'Days'
-      },
-      ar: {
-        appSubtitle: 'نظام التعلم الطبي',
-        navLearn: 'المحرك الأساسي',
-        navDashboard: 'لوحة التحكم',
-        navReview: 'المراجعة الذكية',
-        navCases: 'الحالات السريرية',
-        navMCQ: 'بنك الأسئلة',
-        navKnowledge: 'المعرفة الطبية',
-        navLibrary: 'الأدوية والمكتبة',
-        navMap: 'خريطة المعرفة',
-        navNotes: 'الملاحظات الطبية',
-        navSystem: 'التحليلات والنظام',
-        navAnalytics: 'الإحصائيات',
-        navSettings: 'الإعدادات',
-        heroGreeting: 'مساء الخير، دكتور 👋',
-        heroSub: 'معدل الاستبقاء المعرفي لديك 88%. لديك 12 بطاقة مستحقة للمراجعة اليوم ومحاكاة حالة سريرية تنتظر تحليلك.',
-        btnStartReview: 'ابدأ مراجعة اليوم',
-        btnLaunchCase: 'بدء الحالة السريرية',
-        statRetention: 'معدل الاستبقاء',
-        statCardsMastered: 'البطاقات المتقنة',
-        statClinicalAccuracy: 'الدقة السريرية',
-        titleCurriculum: 'نسبة إتقان المواد الطبية',
-        titleActivity: 'خريطة النشاط اليومي',
-        titleWeakAlert: 'نقطة ضعف ذات أولوية',
-        userLevel: 'المستوى 4 • مقيم',
-        streakDays: 'أيام متتالية'
-      }
-    };
-
-    // ==========================================================================
-    // MEDORA CORE CONTROLLER
-    // ==========================================================================
-    class MedoraApp {
+    class MedoraEngine {
       constructor() {
-        this.currentLang = 'en';
         this.currentTheme = 'dark';
-        this.cards = [];
-        this.currentCardIndex = 0;
-        this.currentCaseIndex = 0;
-        this.activeCard = null;
-        this.examTimerSeconds = 2660; // 44:20
+        this.currentLang = 'en';
+        this.soundEnabled = true;
+        this.audioCtx = null;
+        this.strikeMode = false;
+        this.highlighterMode = false;
+        
+        this.cards = JSON.parse(localStorage.getItem('medora_cards_v2')) || [
+          {
+            deck: 'Autonomic Pharmacology',
+            front: 'What is the first-line pharmacologic antidote for organophosphate toxicity, and what is its mechanism?',
+            back: '<strong>Atropine</strong> (muscarinic antagonist) followed by <strong>Pralidoxime (2-PAM)</strong> to reactivate acetylcholinesterase.',
+            stability: 4.2, reps: 3, dueDate: Date.now() - 1000
+          },
+          {
+            deck: 'Cardiovascular Physiology',
+            front: 'The SA Node is supplied by the {{c1::Right Coronary Artery (RCA)}} in approximately {{c2::60%}} of the population.',
+            back: 'SA node branch arises from the proximal RCA in 60%, and from the circumflex branch of the LCA in 40%.',
+            stability: 8.0, reps: 5, dueDate: Date.now() - 5000
+          }
+        ];
+        
+        this.activeCardIdx = 0;
+        this.ecgOffset = 0;
       }
 
-      async init() {
-        this.loadStoredPreferences();
-        this.initDatabase();
-        this.renderHeatmap();
-        this.renderLibrary();
-        this.initKeyboardShortcuts();
-        this.startExamTimer();
-
+      init() {
+        this.initAudio();
+        this.initECGCanvas();
+        this.renderPharmaGrid();
+        this.initShortcuts();
         lucide.createIcons();
       }
 
-      loadStoredPreferences() {
-        const savedLang = localStorage.getItem('medora_lang') || 'en';
-        const savedTheme = localStorage.getItem('medora_theme') || 'dark';
-        this.setLanguage(savedLang);
-        this.setTheme(savedTheme);
+      // --- Web Audio Synthesizer (No external mp3 dependencies) ---
+      initAudio() {
+        try {
+          window.AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.audioCtx = new AudioContext();
+        } catch(e) {}
       }
 
-      initDatabase() {
-        // Load cards from LocalStorage or seed data
-        const localCards = localStorage.getItem('medora_cards');
-        if (localCards) {
-          this.cards = JSON.parse(localCards);
-        } else {
-          this.cards = [...SEED_DATA.cards];
-          this.saveCards();
+      playMedicalSound(type) {
+        if (!this.soundEnabled || !this.audioCtx) return;
+        if (this.audioCtx.state === 'suspended') this.audioCtx.resume();
+
+        const osc = this.audioCtx.createOscillator();
+        const gain = this.audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(this.audioCtx.destination);
+
+        const now = this.audioCtx.currentTime;
+        if (type === 'correct') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(587.33, now); // D5
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.15); // A5
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+          osc.start(now);
+          osc.stop(now + 0.3);
+        } else if (type === 'wrong') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.linearRampToValueAtTime(110, now + 0.2);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.2);
+          osc.start(now);
+          osc.stop(now + 0.2);
+        } else if (type === 'tick') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(1200, now);
+          gain.gain.setValueAtTime(0.05, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+          osc.start(now);
+          osc.stop(now + 0.04);
         }
-        this.updateDueCounts();
       }
 
-      saveCards() {
-        localStorage.setItem('medora_cards', JSON.stringify(this.cards));
-        this.updateDueCounts();
+      toggleSound() {
+        this.soundEnabled = !this.soundEnabled;
+        document.getElementById('sound-btn').innerHTML = `<i data-lucide="${this.soundEnabled ? 'volume-2' : 'volume-x'}" style="width: 18px; height: 18px;"></i>`;
+        lucide.createIcons();
       }
 
-      updateDueCounts() {
-        const due = this.cards.filter(c => c.dueDate <= Date.now()).length;
-        const count = due > 0 ? due : this.cards.length;
-        const countElem = document.getElementById('sidebar-due-count');
-        const totalElem = document.getElementById('review-total-count');
-        if (countElem) countElem.innerText = count;
-        if (totalElem) totalElem.innerText = count;
+      // --- Real-time SVG/Canvas ECG Simulation ---
+      initECGCanvas() {
+        const canvas = document.getElementById('ecg-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        const draw = () => {
+          ctx.fillStyle = '#02050B';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          // ECG Grid
+          ctx.strokeStyle = 'rgba(34, 197, 94, 0.08)';
+          ctx.lineWidth = 1;
+          for (let x = 0; x < canvas.width; x += 15) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke(); }
+          for (let y = 0; y < canvas.height; y += 15) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke(); }
+
+          // Waveform
+          ctx.strokeStyle = '#22C55E';
+          ctx.lineWidth = 2.2;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = '#22C55E';
+          ctx.beginPath();
+
+          for (let x = 0; x < canvas.width; x++) {
+            const phase = (x + this.ecgOffset) % 120;
+            let y = canvas.height / 2;
+
+            if (phase > 20 && phase < 35) y -= Math.sin((phase - 20) / 15 * Math.PI) * 8; // P wave
+            else if (phase > 45 && phase < 50) y += 6; // Q wave
+            else if (phase >= 50 && phase <= 60) y -= 48; // R spike
+            else if (phase > 60 && phase < 65) y += 12; // S dip
+            else if (phase > 75 && phase < 100) y -= Math.sin((phase - 75) / 25 * Math.PI) * 14; // T wave
+
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+
+          this.ecgOffset += 3.5;
+          requestAnimationFrame(draw);
+        };
+        draw();
       }
 
-      // --- Navigation & Routing ---
+      // --- Navigation ---
       navigate(viewId) {
+        this.playMedicalSound('tick');
         document.querySelectorAll('.view-container').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.nav-item, .bottom-nav-item').forEach(el => el.classList.remove('active'));
 
-        const targetView = document.getElementById(`view-${viewId}`);
-        if (targetView) targetView.classList.add('active');
+        const target = document.getElementById(`view-${viewId}`);
+        if (target) target.classList.add('active');
 
-        // Update active class in navigation buttons
-        document.querySelectorAll(`.nav-item[onclick*="${viewId}"], .bottom-nav-item[onclick*="${viewId}"]`).forEach(btn => {
-          btn.classList.add('active');
-        });
+        document.querySelectorAll(`.nav-item[onclick*="${viewId}"], .bottom-nav-item[onclick*="${viewId}"]`).forEach(b => b.classList.add('active'));
 
-        if (viewId === 'review') {
-          this.startReviewSession();
-        }
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (viewId === 'review') this.loadSRCard();
         lucide.createIcons();
       }
 
-      // --- Theme & Language Toggles ---
-      toggleTheme() {
-        const newTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
-        this.setTheme(newTheme);
+      // --- Anatomy & Occlusion Mode ---
+      toggleMask(maskId, name) {
+        const mask = document.getElementById(`mask-${maskId}`);
+        mask.classList.toggle('revealed');
+        this.playMedicalSound('tick');
+
+        const inspector = document.getElementById('anatomy-inspector-content');
+        if (maskId === 1) {
+          inspector.innerHTML = `<strong>Sinoatrial (SA) Node:</strong> Located in right atrium near SVC orifice. Dominant pacemaker (60-100 bpm). Vascularized primarily by RCA (60%) or LCx (40%).`;
+        } else if (maskId === 2) {
+          inspector.innerHTML = `<strong>Atrioventricular (AV) Node:</strong> Located in Koch's triangle. Enforces essential ~0.1s conduction delay to allow ventricular filling.`;
+        } else {
+          inspector.innerHTML = `<strong>Bundle of His & Purkinje Fibers:</strong> Fast conduction pathways (2-4 m/s) ensuring synchronized ventricular apex-to-base contraction.`;
+        }
       }
 
-      setTheme(theme) {
-        this.currentTheme = theme;
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('medora_theme', theme);
-        const icon = document.getElementById('theme-toggle-icon');
-        if (icon) {
-          icon.setAttribute('data-lucide', theme === 'dark' ? 'moon' : 'sun');
-          lucide.createIcons();
+      resetOcclusions() {
+        document.querySelectorAll('.occlusion-mask').forEach(m => m.classList.remove('revealed'));
+      }
+
+      // --- UWorld MCQ Engine ---
+      pickUWorldChoice(idx, isCorrect, elem) {
+        if (elem.classList.contains('struck')) return;
+        document.querySelectorAll('.uworld-choice-item').forEach(e => e.classList.remove('selected'));
+        elem.classList.add('selected');
+
+        if (isCorrect) {
+          elem.classList.add('correct-ans');
+          this.playMedicalSound('correct');
+          confetti({ particleCount: 40, spread: 60 });
+        } else {
+          elem.classList.add('wrong-ans');
+          this.playMedicalSound('wrong');
         }
+        document.getElementById('uworld-rationale').style.display = 'block';
+      }
+
+      toggleStrikeMode() {
+        this.strikeMode = !this.strikeMode;
+        document.getElementById('btn-strike-mode').classList.toggle('active', this.strikeMode);
+      }
+
+      toggleHighlighter() {
+        this.highlighterMode = !this.highlighterMode;
+        document.getElementById('btn-highlight-mode').classList.toggle('active', this.highlighterMode);
+      }
+
+      handleTextHighlight() {
+        if (!this.highlighterMode) return;
+        const selection = window.getSelection();
+        if (!selection.rangeCount || selection.isCollapsed) return;
+        const range = selection.getRangeAt(0);
+        const span = document.createElement('span');
+        span.className = 'highlighted-text';
+        span.appendChild(range.extractContents());
+        range.insertNode(span);
+        selection.removeAllRanges();
+      }
+
+      // --- Spaced Repetition Engine ---
+      loadSRCard() {
+        if (this.cards.length === 0) return;
+        const card = this.cards[this.activeCardIdx % this.cards.length];
+        document.getElementById('sr-front-text').innerHTML = this.parseCloze(card.front);
+        document.getElementById('sr-back-text').innerHTML = card.back;
+        document.getElementById('sr-deck-name').innerText = card.deck || 'General Medicine';
+        document.getElementById('sr-cur-idx').innerText = (this.activeCardIdx + 1);
+        document.getElementById('sr-total-count').innerText = this.cards.length;
+
+        document.getElementById('sr-back-container').style.display = 'none';
+        document.getElementById('btn-sr-reveal').style.display = 'block';
+        document.getElementById('sr-fsrs-buttons').style.display = 'none';
+      }
+
+      parseCloze(text) {
+        return text.replace(/\{\{c\d+::(.*?)\}\}/g, '<span style="color: var(--brand-400); font-weight: 800; border-bottom: 2px solid var(--brand-500); padding: 0 4px;">[...]</span>');
+      }
+
+      revealSRAnswer() {
+        this.playMedicalSound('tick');
+        const card = this.cards[this.activeCardIdx % this.cards.length];
+        // Unmask cloze in front text
+        const unmaskedFront = card.front.replace(/\{\{c\d+::(.*?)\}\}/g, '<span style="color: #22C55E; font-weight: 800; background: rgba(34, 197, 94, 0.15); padding: 2px 6px; border-radius: 4px;">$1</span>');
+        document.getElementById('sr-front-text').innerHTML = unmaskedFront;
+        document.getElementById('sr-back-container').style.display = 'block';
+        document.getElementById('btn-sr-reveal').style.display = 'none';
+        document.getElementById('sr-fsrs-buttons').style.display = 'block';
+      }
+
+      rateSRCard(rating) {
+        if (rating >= 3) {
+          this.playMedicalSound('correct');
+        } else {
+          this.playMedicalSound('wrong');
+        }
+
+        this.activeCardIdx = (this.activeCardIdx + 1) % this.cards.length;
+        this.loadSRCard();
+      }
+
+      pronounceCard() {
+        const text = document.getElementById('sr-front-text').innerText;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+      }
+
+      // --- Clinical Cases ---
+      answerCaseStep(step, isCorrect, btn) {
+        if (isCorrect) {
+          btn.classList.add('correct-ans');
+          this.playMedicalSound('correct');
+          confetti({ particleCount: 50, spread: 70 });
+        } else {
+          btn.classList.add('wrong-ans');
+          this.playMedicalSound('wrong');
+        }
+        document.getElementById('case-explanation').style.display = 'block';
+      }
+
+      // --- Pharmacopeia Render ---
+      renderPharmaGrid() {
+        const grid = document.getElementById('pharma-grid');
+        if (!grid) return;
+        const drugs = [
+          { name: 'Metoprolol Tartrate', class: 'Selective Beta-1 Blocker', moa: 'Decreases myocardial contractility & HR; reduces cardiac oxygen demand.' },
+          { name: 'Lisinopril', class: 'ACE Inhibitor', moa: 'Halts Angiotensin II conversion; lowers efferent arteriolar resistance.' },
+          { name: 'Atorvastatin', class: 'HMG-CoA Reductase Inhibitor', moa: 'Inhibits cholesterol synthesis; upregulates hepatic LDL receptors.' }
+        ];
+
+        grid.innerHTML = drugs.map(d => `
+          <div class="card-panel">
+            <span class="badge badge-purple" style="margin-bottom: 8px;">${d.class}</span>
+            <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 6px;">${d.name}</h3>
+            <p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5;">${d.moa}</p>
+          </div>
+        `).join('');
+      }
+
+      // --- Custom Deck Builder ---
+      createNewCustomCard() {
+        const deck = document.getElementById('builder-deck').value || 'General Decks';
+        const front = document.getElementById('builder-front').value;
+        const back = document.getElementById('builder-back').value;
+
+        if (!front.trim()) { alert('Please enter question content.'); return; }
+
+        this.cards.push({ deck, front, back, stability: 1.0, reps: 0, dueDate: Date.now() });
+        localStorage.setItem('medora_cards_v2', JSON.stringify(this.cards));
+        this.playMedicalSound('correct');
+        alert('✓ Card successfully formulated into Local Memory Vault!');
+        document.getElementById('builder-front').value = '';
+        document.getElementById('builder-back').value = '';
+      }
+
+      // --- Vault JSON Export/Import ---
+      exportAllData() {
+        const str = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.cards, null, 2));
+        const dl = document.createElement('a');
+        dl.setAttribute("href", str);
+        dl.setAttribute("download", `medora_vault_backup_${Date.now()}.json`);
+        dl.click();
+      }
+
+      importCardsFile(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        const r = new FileReader();
+        r.onload = (ev) => {
+          try {
+            this.cards = JSON.parse(ev.target.result);
+            localStorage.setItem('medora_cards_v2', JSON.stringify(this.cards));
+            alert('✓ Vault loaded successfully!');
+            this.navigate('dashboard');
+          } catch(err) { alert('Invalid file format.'); }
+        };
+        r.readAsText(file);
+      }
+
+      toggleTheme() {
+        this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', this.currentTheme);
+        document.getElementById('theme-icon').setAttribute('data-lucide', this.currentTheme === 'dark' ? 'moon' : 'sun');
+        lucide.createIcons();
       }
 
       toggleLanguage() {
-        const newLang = this.currentLang === 'en' ? 'ar' : 'en';
-        this.setLanguage(newLang);
+        this.currentLang = this.currentLang === 'en' ? 'ar' : 'en';
+        document.documentElement.setAttribute('dir', this.currentLang === 'ar' ? 'rtl' : 'ltr');
+        document.getElementById('lang-btn-text').innerText = this.currentLang === 'ar' ? 'EN' : 'عربي';
       }
 
-      setLanguage(lang) {
-        this.currentLang = lang;
-        document.documentElement.setAttribute('lang', lang);
-        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-        localStorage.setItem('medora_lang', lang);
-
-        const langIndicator = document.getElementById('lang-indicator');
-        if (langIndicator) langIndicator.innerText = lang === 'ar' ? 'EN' : 'عربي';
-
-        // Translate all data-i18n items
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const key = el.getAttribute('data-i18n');
-          if (I18N[lang] && I18N[lang][key]) {
-            el.innerText = I18N[lang][key];
-          }
-        });
-      }
-
-      // ======================================================================
-      // SPACED REPETITION ENGINE (SM-2 / FSRS)
-      // ======================================================================
-      startReviewSession() {
-        this.currentCardIndex = 0;
-        this.loadActiveCard();
-      }
-
-      loadActiveCard() {
-        if (this.cards.length === 0) return;
-        this.activeCard = this.cards[this.currentCardIndex % this.cards.length];
-
-        document.getElementById('review-current-index').innerText = (this.currentCardIndex + 1);
-        document.getElementById('review-deck-title').innerText = this.activeCard.deck;
-        document.getElementById('review-front-content').innerHTML = this.activeCard.front;
-        document.getElementById('review-back-content').innerHTML = this.activeCard.back;
-        document.getElementById('review-pearl-content').innerHTML = this.activeCard.pearl;
-        document.getElementById('review-trap-content').innerHTML = this.activeCard.trap;
-
-        // Reset display
-        document.getElementById('review-back-container').style.display = 'none';
-        document.getElementById('btn-reveal-answer').style.display = 'flex';
-        document.getElementById('rating-actions-panel').style.display = 'none';
-      }
-
-      revealCardAnswer() {
-        document.getElementById('review-back-container').style.display = 'block';
-        document.getElementById('btn-reveal-answer').style.display = 'none';
-        document.getElementById('rating-actions-panel').style.display = 'block';
-      }
-
-      rateCard(grade) {
-        // SM-2 Adaptive Algorithm
-        const card = this.activeCard;
-        if (!card.reps) card.reps = 0;
-        if (!card.easeFactor) card.easeFactor = 2.5;
-        if (!card.interval) card.interval = 1;
-
-        if (grade === 1) { // Again
-          card.reps = 0;
-          card.interval = 1;
-          card.easeFactor = Math.max(1.3, card.easeFactor - 0.2);
-        } else if (grade === 2) { // Hard
-          card.interval = Math.round(card.interval * 1.2);
-          card.easeFactor = Math.max(1.3, card.easeFactor - 0.15);
-        } else if (grade === 3) { // Good
-          card.reps += 1;
-          card.interval = card.reps === 1 ? 1 : card.reps === 2 ? 6 : Math.round(card.interval * card.easeFactor);
-        } else if (grade === 4) { // Easy
-          card.reps += 1;
-          card.interval = card.reps === 1 ? 4 : Math.round(card.interval * card.easeFactor * 1.3);
-          card.easeFactor += 0.15;
-        }
-
-        card.dueDate = Date.now() + (card.interval * 24 * 60 * 60 * 1000);
-        this.saveCards();
-
-        // Celebration on completing sets
-        if (this.currentCardIndex + 1 === this.cards.length) {
-          confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
-        }
-
-        this.currentCardIndex = (this.currentCardIndex + 1) % this.cards.length;
-        this.loadActiveCard();
-      }
-
-      toggleCardStar() {
-        const starIcon = document.getElementById('card-star-icon');
-        starIcon.classList.toggle('text-warning');
-      }
-
-      // ======================================================================
-      // CLINICAL CASES CONTROLLER
-      // ======================================================================
-      loadNextCase() {
-        this.currentCaseIndex = (this.currentCaseIndex + 1) % SEED_DATA.cases.length;
-        const c = SEED_DATA.cases[this.currentCaseIndex];
-
-        document.getElementById('case-title').innerText = c.title;
-        document.getElementById('case-narrative-text').innerText = c.narrative;
-        document.getElementById('vital-hr').innerText = c.vitals.hr;
-        document.getElementById('vital-bp').innerText = c.vitals.bp;
-        document.getElementById('vital-spo2').innerText = c.vitals.spo2;
-        document.getElementById('vital-temp').innerText = c.vitals.temp;
-
-        const optionsContainer = document.getElementById('case-options-container');
-        optionsContainer.innerHTML = '';
-        c.options.forEach((opt, idx) => {
-          const btn = document.createElement('button');
-          btn.className = 'case-opt-btn';
-          btn.innerText = opt;
-          btn.onclick = (e) => this.submitCaseAnswer(idx, btn);
-          optionsContainer.appendChild(btn);
-        });
-
-        document.getElementById('case-rationale-box').style.display = 'none';
-      }
-
-      submitCaseAnswer(index, btnElem) {
-        const currentCase = SEED_DATA.cases[this.currentCaseIndex];
-        const buttons = document.querySelectorAll('.case-opt-btn');
-        buttons.forEach(b => b.disabled = true);
-
-        if (index === currentCase.correct) {
-          btnElem.classList.add('correct');
-          confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
-        } else {
-          btnElem.classList.add('wrong');
-          if (buttons[currentCase.correct]) buttons[currentCase.correct].classList.add('correct');
-        }
-
-        document.getElementById('case-rationale-box').style.display = 'block';
-      }
-
-      // ======================================================================
-      // MCQ ENGINE & EXAM SIMULATOR
-      // ======================================================================
-      selectMCQOption(idx, elem) {
-        document.querySelectorAll('.mcq-option-card').forEach(el => el.classList.remove('selected'));
-        elem.classList.add('selected');
-      }
-
-      showMCQExplanation() {
-        document.getElementById('mcq-explanation-box').style.display = 'block';
-      }
-
-      nextMCQQuestion() {
-        document.getElementById('mcq-explanation-box').style.display = 'none';
-        document.querySelectorAll('.mcq-option-card').forEach(el => el.classList.remove('selected'));
-      }
-
-      startExamTimer() {
-        setInterval(() => {
-          if (this.examTimerSeconds > 0) {
-            this.examTimerSeconds--;
-            const mins = Math.floor(this.examTimerSeconds / 60);
-            const secs = this.examTimerSeconds % 60;
-            const display = document.getElementById('exam-timer-display');
-            if (display) {
-              display.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-            }
-          }
-        }, 1000);
-      }
-
-      // ======================================================================
-      // LIBRARY & KNOWLEDGE GRAPH
-      // ======================================================================
-      renderLibrary() {
-        const container = document.getElementById('library-cards-container');
-        if (!container) return;
-        container.innerHTML = '';
-
-        SEED_DATA.drugs.forEach(d => {
-          const card = document.createElement('div');
-          card.className = 'monograph-card';
-          card.innerHTML = `
-            <div>
-              <div class="badge badge-purple" style="margin-bottom: 8px;">${d.class}</div>
-              <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">${d.name}</h3>
-              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">${d.moa}</p>
-            </div>
-            <div style="display: flex; gap: 8px; margin-top: 12px;">
-              <button class="btn-secondary" style="font-size: 0.75rem; width: 100%; justify-content: center;" onclick="app.convertDrugToCard('${d.id}')">
-                <i data-lucide="plus" style="width: 12px; height: 12px;"></i> Add to Flashcards
-              </button>
-            </div>
-          `;
-          container.appendChild(card);
-        });
-      }
-
-      convertDrugToCard(drugId) {
-        const drug = SEED_DATA.drugs.find(d => d.id === drugId);
-        if (!drug) return;
-
-        const newCard = {
-          id: 'card-' + Date.now(),
-          deck: 'Pharmacology Vault',
-          type: 'Drug Monograph',
-          front: `What is the Mechanism of Action, Indication, and Major Adverse Effects of <strong>${drug.name}</strong>?`,
-          back: `<strong>Class:</strong> ${drug.class}<br><strong>MOA:</strong> ${drug.moa}<br><strong>Indications:</strong> ${drug.indications}`,
-          pearl: `Adverse Effects: ${drug.adverse}`,
-          trap: 'Monitor renal and electrolyte panels closely during initiation.',
-          highYield: true,
-          reps: 0,
-          interval: 1,
-          easeFactor: 2.5,
-          dueDate: Date.now()
-        };
-
-        this.cards.push(newCard);
-        this.saveCards();
-        alert(`✓ Added ${drug.name} to your Spaced Repetition queue!`);
-      }
-
-      openConceptModal(conceptTitle) {
-        document.getElementById('modal-concept-title').innerText = conceptTitle;
-        document.getElementById('modal-concept-body').innerHTML = `
-          <strong>Synoptic High-Yield Review for:</strong> ${conceptTitle}<br><br>
-          This topic holds high statistical weight in USMLE/Clinical Board examinations. Key cognitive integrations include pathophysiology mechanisms, diagnostic gold-standards, and evidence-based pharmacotherapy guidelines.
-        `;
-        document.getElementById('concept-modal').classList.add('active');
-      }
-
-      closeConceptModal() {
-        document.getElementById('concept-modal').classList.remove('active');
-      }
-
-      generateDeckFromModal() {
-        const title = document.getElementById('modal-concept-title').innerText;
-        this.closeConceptModal();
-        alert(`✓ 5 Custom Flashcards generated for "${title}" and scheduled!`);
-      }
-
-      cramWeakConcept() {
-        this.navigate('review');
-      }
-
-      // ======================================================================
-      // NOTES PARSER → FLASHCARDS
-      // ======================================================================
-      parseNotesToCards() {
-        const noteText = document.getElementById('medical-notes-editor').value;
-        if (!noteText.trim()) {
-          alert('Please enter some notes first!');
-          return;
-        }
-
-        const lines = noteText.split('\n');
-        let created = 0;
-        let tempQ = '', tempA = '';
-
-        lines.forEach(line => {
-          if (line.startsWith('Q:')) tempQ = line.replace('Q:', '').trim();
-          if (line.startsWith('A:')) {
-            tempA = line.replace('A:', '').trim();
-            if (tempQ && tempA) {
-              this.cards.push({
-                id: 'card-user-' + Date.now() + Math.random(),
-                deck: 'Custom Notes Deck',
-                type: 'User Created',
-                front: tempQ,
-                back: tempA,
-                pearl: 'Created from Medical Notepad',
-                trap: 'High-Yield Self Formulated Note',
-                highYield: true,
-                reps: 0,
-                interval: 1,
-                easeFactor: 2.5,
-                dueDate: Date.now()
-              });
-              created++;
-              tempQ = '';
-              tempA = '';
-            }
-          }
-        });
-
-        if (created > 0) {
-          this.saveCards();
-          alert(`✓ Successfully parsed and created ${created} Spaced Repetition Cards!`);
-          this.navigate('review');
-        } else {
-          alert('Could not detect Q: and A: pairs. Please format your text like:\nQ: Question here\nA: Answer here');
-        }
-      }
-
-      // ======================================================================
-      // EXPORT & IMPORT DATA
-      // ======================================================================
-      exportDatabase() {
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.cards, null, 2));
-        const downloadAnchor = document.createElement('a');
-        downloadAnchor.setAttribute("href", dataStr);
-        downloadAnchor.setAttribute("download", `medora_backup_${new Date().toISOString().slice(0,10)}.json`);
-        document.body.appendChild(downloadAnchor);
-        downloadAnchor.click();
-        downloadAnchor.remove();
-      }
-
-      importDatabase(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          try {
-            const imported = JSON.parse(e.target.result);
-            if (Array.isArray(imported)) {
-              this.cards = imported;
-              this.saveCards();
-              alert('✓ Database imported successfully!');
-              this.navigate('dashboard');
-            }
-          } catch (err) {
-            alert('Invalid JSON file format.');
-          }
-        };
-        reader.readAsText(file);
-      }
-
-      // ======================================================================
-      // UTILITIES & HEATMAP
-      // ======================================================================
-      renderHeatmap() {
-        const grid = document.getElementById('dashboard-heatmap');
-        if (!grid) return;
-        grid.innerHTML = '';
-        for (let i = 0; i < 28; i++) {
-          const cell = document.createElement('div');
-          const level = (i % 5 === 0) ? 'level-4' : (i % 3 === 0) ? 'level-2' : (i % 2 === 0) ? 'level-1' : '';
-          cell.className = `heatmap-cell ${level}`;
-          cell.title = `Day ${i + 1}: Study session logged`;
-          grid.appendChild(cell);
-        }
-      }
-
-      handleGlobalSearch(query) {
-        if (!query.trim()) return;
-        console.log("Searching indexed medical base for:", query);
-      }
-
-      initKeyboardShortcuts() {
+      initShortcuts() {
         window.addEventListener('keydown', (e) => {
-          const reviewView = document.getElementById('view-review');
-          if (reviewView && reviewView.classList.contains('active')) {
-            if (e.code === 'Space') {
-              e.preventDefault();
-              const revealBtn = document.getElementById('btn-reveal-answer');
-              if (revealBtn.style.display !== 'none') {
-                this.revealCardAnswer();
-              }
-            } else if (e.key === '1') {
-              this.rateCard(1);
-            } else if (e.key === '2') {
-              this.rateCard(2);
-            } else if (e.key === '3') {
-              this.rateCard(3);
-            } else if (e.key === '4') {
-              this.rateCard(4);
-            } else if (e.key.toLowerCase() === 's') {
-              this.toggleCardStar();
-            }
+          if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            document.getElementById('omni-search').focus();
+          }
+          if (e.code === 'Space' && document.getElementById('view-review').classList.contains('active')) {
+            const btn = document.getElementById('btn-sr-reveal');
+            if (btn.style.display !== 'none') { e.preventDefault(); this.revealSRAnswer(); }
           }
         });
       }
     }
 
-    // Initialize application on DOM ready
-    const app = new MedoraApp();
-    document.addEventListener('DOMContentLoaded', () => {
-      app.init();
-    });
+    const app = new MedoraEngine();
+    document.addEventListener('DOMContentLoaded', () => app.init());
   </script>
 </body>
 </html>
